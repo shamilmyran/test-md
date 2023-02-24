@@ -19,7 +19,8 @@ const config = require("./config");
 const { PluginDB } = require("./lib/database/plugins");
 const Greetings = require("./lib/Greetings");
 let { toBuffer } = require("qrcode");
-const { LOGS, KOYEB_APP_NAME, KOYEB_API_KEY, DATABASE_URL, STORAGE_JID, HEROKU_API_KEY, ANTILINK_ACTION, SESSION_ID, BRANCH, ALIVE, HEROKU_APP_NAME, GOODBYE_MSG, WELCOME_MSG, HANDLERS, WORK_TYPE, BOT_NAME, OWNER_NAME, SUDO, AUTHOR, PACKNAME, RMBG_KEY, LANG, ANTILINK_ACTION, ANTILINK, FOOTER, THEME, FONT_STYLE, LANGUAGE, INTERNAL_MENU, MODE} = require("./database/settings");
+const { LOGS, KOYEB_APP_NAME, KOYEB_API_KEY, DATABASE_URL, STORAGE_JID, HEROKU_API_KEY, ANTILINK_ACTION, SESSION_ID, BRANCH, ALIVE, HEROKU_APP_NAME, GOODBYE_MSG, WELCOME_MSG, HANDLERS, WORK_TYPE, BOT_NAME, OWNER_NAME, SUDO, AUTHOR, PACKNAME, RMBG_KEY, LANG, ANTILINK, FOOTER, THEME, FONT_STYLE, LANGUAGE, INTERNAL_MENU, MODE} = require("./database/settings")
+;
 const { MakeSession } = require("./lib/session");
 let jsox = require("./database/store.json")
 
