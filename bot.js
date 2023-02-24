@@ -234,7 +234,5 @@ app.listen(port, () => console.log(`AlienAlfa Server listening on port http://lo
 
 
 
-setTimeout(() => {
   AlienAlfa().catch((err) => console.log(err));
-}, 2000)
 
