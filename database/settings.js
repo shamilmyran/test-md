@@ -23,7 +23,7 @@ module.exports = {
     
   LOGS: req.config.LOGS || true,
   ANTILINK_ACTION: req.config.ANTILINK_ACTION || "ban",
-  SESSION_ID: req.config.SESSION_ID || process.env.SESSION_ID,
+  SESSION_ID: process.env.SESSION_ID || req.config.SESSION_ID,
   LANG: req.config.LANG || "EN",
   HANDLERS: req.config.HANDLERS === "false" ? "^" : req.config.HANDLERS,
   RMBG_KEY: req.config.RMBG_KEY || false,
