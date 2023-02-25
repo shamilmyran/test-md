@@ -37,9 +37,7 @@ const store = makeInMemoryStore({
   logger: pino().child({ level: "silent", stream: "store" }),
 });
 async function Singmulti() {
-  if (!fs.existsSync(__dirname+'/session.json'))
-  if (!SESSION_ID === false)
-  await MakeSession(SESSION_ID,__dirname+'/session.json')
+  if (!fs.existsSync(__dirname+'/session.json')){ process.send("reset")}
   const { state } = await useMultiFileAuthState(__dirname + "/session");
   await singleToMulti("session.json", __dirname + "/session", state);
 }
