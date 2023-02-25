@@ -1,7 +1,6 @@
 const { command, qrcode, isUrl, isPrivate, findMusic } = require("../lib/");
 const jimp = require("jimp");
 const QRReader = require("qrcode-reader");
-const { RMBG_KEY } = require("../config");
 let { unlink } = require("fs/promises");
 const got = require("got");
 const FormData = require("form-data");

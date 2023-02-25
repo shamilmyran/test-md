@@ -1,12 +1,11 @@
 const fs = require("fs")
 const { command } = require("../lib");
-const Config = require("../config");
 const Heroku = require("heroku-client");
-const heroku = new Heroku({ token: Config.HEROKU_API_KEY });
-const baseURI = "/apps/" + Config.HEROKU_APP_NAME;
-var parsedData = JSON.parse(fs.readFileSync('./database/settings.json', "utf8"));
-  const { SUDIO } = require("../database/settings");
 
+var parsedData = JSON.parse(fs.readFileSync('./database/settings.json', "utf8"));
+  const { SUDIO, HEROKU_API_KEY, HEROKU_APP_NAME } = require("../database/settings");
+  const heroku = new Heroku({ token: HEROKU_API_KEY });
+  const baseURI = "/apps/" + HEROKU_APP_NAME;
 
 command({ pattern: "setsudo ?(.*)", 
     fromMe: true, 

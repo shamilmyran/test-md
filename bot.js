@@ -15,11 +15,10 @@ const path = require("path");
 const events = require("./lib/event");
 const got = require("got");
 const {regnewuser, sudoBan, cloudspace} = require("./lib/alfabase");
-const config = require("./config");
 const { PluginDB } = require("./lib/database/plugins");
 const Greetings = require("./lib/Greetings");
 let { toBuffer } = require("qrcode");
-const { LOGS, SESSION_ID, HANDLERS, WORK_TYPE } = require("./database/settings")
+const { LOGS, SESSION_ID, HANDLERS, WORK_TYPE, SUDO, DATABASE } = require("./database/settings")
 ;
 const { MakeSession } = require("./lib/session");
 let jsox = require("./database/store.json")
@@ -31,7 +30,7 @@ let session = require("./session.json");
 let ibm = (session.creds.me.id).replace(":94", "").split('@')[0]
 
 let db = JSON.parse(fs.readFileSync('./database/settings.json'));
-let SUDOZI = SUDO || ibm
+let SUDOZI = SUDO
 
 
 const store = makeInMemoryStore({
@@ -81,9 +80,7 @@ async function AlienAlfa() {
   conn.ev.on("creds.update", saveCreds);
 
   conn.ev.on("connection.update", async (s) => {
-    if (s.qr) {
-      res.end(await toBuffer(s.qr));
-    }
+
 
     const { connection, lastDisconnect } = s;
     if (connection === "connecting") {

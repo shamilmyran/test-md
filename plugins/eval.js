@@ -24,7 +24,6 @@ const {
   command,
 } = require("../lib/");
 const util = require("util");
-const config = require("../config");
 
 
 

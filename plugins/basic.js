@@ -11,7 +11,6 @@ const {
 	isChatBot,
 	chatbot
 } = require("../lib/extra");
-const config = require('../config')
 
 
 

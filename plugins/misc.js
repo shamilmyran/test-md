@@ -1,5 +1,4 @@
 const { command, sleep, isPrivate, isUrl, Bitly, getJson, getBuffer } = require("../lib/");
-const c = require("../config");
 let { execSync } = require('child_process')
 const {MessageType} = require('@adiwajshing/baileys');
 

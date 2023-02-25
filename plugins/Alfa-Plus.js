@@ -9,7 +9,6 @@ const { isAdmin, parsedJid, isUrl } = require("../lib");
 
 const events = require("../lib/event");
 const { command, isPrivate, tiny, serif_B, clockString, styletext, listall, } = require("../lib");
-const { ALIVE, GOODBYE_MSG, WELCOME_MSG, HANDLERS, WORK_TYPE, BOT_NAME, OWNER_NAME, SUDO, AUTHOR, PACKNAME, RMBG_KEY, LANG, ANTILINK_ACTION, ANTILINK, FOOTER, THEME, FONT_STYLE, LANGUAGE, INTERNAL_MENU, MODE} = require("../config");
 
 const { hostname, uptime, totalmem, freemem } = require("os");
 const { configz } = require("dotenv");

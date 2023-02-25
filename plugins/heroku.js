@@ -1,7 +1,6 @@
 const got = require("got");
 const Heroku = require("heroku-client");
 const { command, isPrivate, tiny } = require("../lib");
-const Config = require("../config");
 const heroku = new Heroku({ token: process.env.HEROKU_API_KEY });
 const baseURI = "/apps/" + process.env.HEROKU_APP_NAME;
 const simpleGit = require("simple-git");

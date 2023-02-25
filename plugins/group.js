@@ -1,4 +1,3 @@
-const config = require("../config");
 const { command, isPrivate } = require("../lib/");
 const { isAdmin, parsedJid, isUrl } = require("../lib");
 const { cron, saveSchedule } = require("../lib/scheduler");
