@@ -15,39 +15,39 @@ if (fs.existsSync("config.env"))
 const toBool = (x) => x == "true";
 
 DATABASE_URL = process.env.DATABASE_URL || "./lib/database.db";
-let HANDLER = "false";
+let HANDLER = "";
 
 module.exports = {
   DATABASE_URL: DATABASE_URL,
   DATABASE:DATABASE_URL === "./lib/database.db"? new Sequelize({dialect: "sqlite",storage: DATABASE_URL,logging: false,}): new Sequelize(DATABASE_URL, {dialect: "postgres",ssl: true,protocol: "postgres",dialectOptions: {native: true,ssl: { require: true, rejectUnauthorized: false },},logging: false,}),
     
-  LOGS: req.config.LOGS || true,
-  ANTILINK_ACTION: req.config.ANTILINK_ACTION || "ban",
+  LOGS: req.config.LOGS  === "" ? true :  req.config.LOGS,
+  ANTILINK_ACTION: req.config.ANTILINK_ACTION  === "" ? "ban" :  req.config.ANTILINK_ACTION,
   SESSION_ID: process.env.SESSION_ID || req.config.SESSION_ID,
-  LANG: req.config.LANG || "EN",
+  LANG: req.config.LANG  === "" ? "EN" :  req.config.LANG,
   HANDLERS: req.config.HANDLERS === "false" ? "^" : req.config.HANDLERS,
-  RMBG_KEY: req.config.RMBG_KEY || false,
-  BRANCH: req.config.BRANCH || "Latest",
-  PACKNAME: req.config.PACKNAME || "Aurora" ,
-  WELCOME_MSG: req.MESSAGE_MEM.WELCOME_MSG || "Hi @user Welcome to @gname",
-  GOODBYE_MSG: req.MESSAGE_MEM.GOODBYE_MSG || "Hi @user It was Nice Seeing you",
-  AUTHOR: req.config.AUTHOR || "Alien-Alfa",
-  SUDO: req.config.SUDO || "",
-  HEROKU_APP_NAME: req.config.HEROKU_APP_NAME || process.env.HEROKU_APP_NAME,
-  HEROKU_API_KEY: req.config.HEROKU_API_KEY ||process.env.HEROKU_API_KEY,
-  OWNER_NAME: req.config.OWNER_NAME || "Alien-Alfa",
-  BOT_NAME: req.config.BOT_NAME || "Aurora",
-  WORK_TYPE: req.config.WORK_TYPE || "private",
-  MODE: req.config.MODE || "private",
-  ALIVE: req.MESSAGE_MEM.ALIVE || "```I am active```",
+  RMBG_KEY: req.config.RMBG_KEY  === "" ? false :  req.config.RMBG_KEY,
+  BRANCH: req.config.BRANCH  === "" ? "latest" : req.config.BRANCH,
+  PACKNAME: req.config.PACKNAME  === "" ? "Aurora" :  req.config.PACKNAME ,
+  WELCOME_MSG: req.MESSAGE_MEM.WELCOME_MSG  === "" ? "^" :  "Hi @user Welcome to @gname",
+  GOODBYE_MSG: req.MESSAGE_MEM.GOODBYE_MSG  === "" ? "^" :  "Hi @user It was Nice Seeing you",
+  AUTHOR: req.config.AUTHOR  === "" ? "^" :  "Alien-Alfa",
+  SUDO: req.config.SUDO  === "" ? "^" :  "",
+  HEROKU_APP_NAME: req.config.HEROKU_APP_NAME  === "" ? "^" :  process.env.HEROKU_APP_NAME,
+  HEROKU_API_KEY: req.config.HEROKU_API_KEY  === "" ? "^" :  process.env.HEROKU_API_KEY,
+  OWNER_NAME: req.config.OWNER_NAME  === "" ? "^" :  "Alien-Alfa",
+  BOT_NAME: req.config.BOT_NAME  === "" ? "^" :  "Aurora",
+  WORK_TYPE: req.config.WORK_TYPE  === "" ?  "private" : req.config.WORK_TYPE,
+  MODE: req.config.MODE  === "" ? "^" :  "private",
+  ALIVE: req.MESSAGE_MEM.ALIVE  === "" ? "^" :  "```I am active```",
 
 
-  FOOTER:  req.config.FOOTER || "Alien-Alfa",
-  THEME: req.config.THEME || "alfa",
-  FONT_STYLE: req.config.FONT_STYLE || "1", //57
-  LANGUAGE: req.config.LANGUAGE || "EN", 
-  INTERNAL_MENU: req.config.INTERNAL_MENU || "active",
-  STORAGE_JID: req.config.STORAGE_JID || "",
+  FOOTER:  req.config.FOOTER  === "" ?  "Alien-Alfa" : req.config.FOOTER,
+  THEME: req.config.THEME  === "" ?  "alfa" : req.config.THEME,
+  FONT_STYLE: req.config.FONT_STYLE  === "" ? "^" :  "1", //57
+  LANGUAGE: req.config.LANGUAGE  === "" ? "^" :  "EN", 
+  INTERNAL_MENU: req.config.INTERNAL_MENU  === "" ? "^" :  "active",
+  STORAGE_JID: req.config.STORAGE_JID  === "" ? "^" :  "",
 
   B1:'╭════〘 ',
   B2:' 〙════⊷❍',
