@@ -126,7 +126,7 @@ async function AlienAlfa() {
       console.log(`✅Bot Running in ${WORK_TYPE} Mode`);
 
       regnewuser(conn)
-      cloudspace()
+      //cloudspace()
       
       try {
         conn.ev.on("group-participants.update", async (data) => {
