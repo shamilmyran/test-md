@@ -59,8 +59,6 @@ module.exports = {
   //------------------------------------------------------------------------------------------------
   STORAGE_JID:  process.env.STORAGE_JID                         || "",
   //------------------------------------------------------------------------------------------------
-  HANDLERS:process.env.HANDLER === "false" ? ""                 : ",",
-  //------------------------------------------------------------------------------------------------
   B1:'╭════〘 ',
   //------------------------------------------------------------------------------------------------
   B2:' 〙════⊷❍',
@@ -83,6 +81,7 @@ module.exports = {
   //------------------------------------------------------------------------------------------------
   DATABASE:DATABASE_URL === "./lib/database.db"? new Sequelize({dialect: "sqlite",storage: DATABASE_URL,logging: false,}): new Sequelize(DATABASE_URL, {dialect: "postgres",ssl: true,protocol: "postgres",dialectOptions: {native: true,ssl: { require: true, rejectUnauthorized: false },},logging: false,}),
   //------------------------------------------------------------------------------------------------
+  HANDLERS:process.env.HANDLER === "false" ? "" :process.env.HANDLER,
 
 };
 
