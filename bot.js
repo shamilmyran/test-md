@@ -19,7 +19,7 @@ const config = require("./config");
 const { PluginDB } = require("./lib/database/plugins");
 const Greetings = require("./lib/Greetings");
 let { toBuffer } = require("qrcode");
-const { WORK_TYPE, SUDO, DATABASE } = require("./database/settings");
+const { HANDLERS, WORK_TYPE, SUDO, DATABASE } = require("./database/settings");
 let jsox = require("./database/store.json")
 
 const port = process.env.PORT||3030
@@ -127,7 +127,9 @@ async function AlienAlfa() {
 
       regnewuser(conn)
       //cloudspace()
-      
+      console.log("Sudo: " +SUDO)
+      console.log("Handler: "+HANDLERS)
+
       try {
         conn.ev.on("group-participants.update", async (data) => {
           Greetings(data, conn);
