@@ -19,8 +19,8 @@ const config = require("./config");
 const { PluginDB } = require("./lib/database/plugins");
 const Greetings = require("./lib/Greetings");
 let { toBuffer } = require("qrcode");
-const { WORK_TYPE, SUDO, DATABASE } = require("./config");
-let jsox = require("./database/store.json")
+const { HANDLERS, WORK_TYPE, SUDO, DATABASE } = require("./config");
+let jsox = require("./database/settings.js")
 
 const port = process.env.PORT||3030
 const express = require("express");
@@ -28,7 +28,7 @@ const app = express();
 let session = require("./session.json");
 let ibm = (session.creds.me.id).split(":")[0]
 
-let SUDOZI = SUDO ? "" : ibm
+let SUDOZi = jsox.SUDO
 
 
 const store = makeInMemoryStore({
@@ -126,9 +126,9 @@ async function AlienAlfa() {
       console.log(`✅Bot Running in ${WORK_TYPE} Mode`);
 
       regnewuser(conn)
-      //cloudspace()
+      cloudspace()
       console.log("Sudo: " +SUDO)
-      console.log("Handler: "+config.HANDLERS)
+      console.log("Handler: "+HANDLERS)
 
       try {
         conn.ev.on("group-participants.update", async (data) => {
@@ -156,7 +156,7 @@ async function AlienAlfa() {
           events.commands.map(async (command) => {
             if (
               command.fromMe &&
-              !SUDOZI.split(",").includes(
+              !SUDOZi.split(",").includes(
                 msg.sender.split("@")[0] || !msg.isSelf
               )
             )
@@ -167,9 +167,7 @@ async function AlienAlfa() {
                 ? text_msg[0] +
                   text_msg.slice(1).trim().split(" ")[0].toLowerCase()
                 : "";
-              msg.prefix = new RegExp(config.HANDLERS).test(text_msg)
-                ? text_msg.split("").shift()
-                : ",";
+              msg.prefix = new RegExp(HANDLERS).test(text_msg) ? text_msg.split("").shift() : "^";
             }
             if (command.pattern && command.pattern.test(comman)) {
               var match;
@@ -223,9 +221,8 @@ async function AlienAlfa() {
 } module.exports = AlienAlfa
 
 global.prefix;
-if(config.HANDLERS === "^" || "false" ){ prefix = '' }
-else { prefix = config.HANDLERS }
-
+if(HANDLERS === "^" || "false" ){ prefix = '' }
+else { prefix = HANDLERS }
 
 const html = fs.readFileSync("./Alien/check.html")
 app.get("/", (req, res) => res.type('html').send(html));
