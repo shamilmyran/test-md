@@ -306,13 +306,14 @@ command(
 
 
 
-command({
-  pattern: "update",
-  fromMe: true,
-  desc: "Checks for update.",
-  type: "heroku",
-},
-async (message, match, m) => {
+command(
+  {
+    pattern: "update",
+    fromMe: true,
+    type: "heroku",
+    desc: "check for update",
+  },
+  async (message, match, m) => {
   //  let {prefix} = message
     
     if (/now/.test(match)) {
