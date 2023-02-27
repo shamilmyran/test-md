@@ -4,6 +4,7 @@
 const Asena = require('../Utilis/events');
 const {MessageType, MessageOptions, Mimetype} = require('@adiwajshing/baileys');
 const Heroku = require('heroku-client');
+const Config = require('../config');
 const heroku = new Heroku({
     token: Config.HEROKU.API_KEY
 });

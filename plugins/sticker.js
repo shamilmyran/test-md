@@ -1,7 +1,8 @@
+const config = require("../database/settings");
 const { command, isPrivate, getJson, sleep, tiny } = require("../lib/");
 const { Image } = require("node-webpmux");
 const fs = require("fs")
-  const { AUTHOR, PACKNAME } = require("../database/settings");
+  const { AUTHOR, PACKNAME} = require("../database/settings");
 
 
 command({

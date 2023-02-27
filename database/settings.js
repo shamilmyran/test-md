@@ -9,8 +9,8 @@ const fs = require("fs");
 let req = JSON.parse(fs.readFileSync('./database/settings.json'));
 
 const { Sequelize } = require("sequelize");
-if (fs.existsSync("config.env"))
-  require("dotenv").config({ path: "./config.env" });
+const conf = require('../config')
+if (fs.existsSync("config.env")) require("dotenv").config({ path: "./config.env" });
 
 const toBool = (x) => x == "true";
 
@@ -25,29 +25,29 @@ module.exports = {
   ANTILINK_ACTION: req.config.ANTILINK_ACTION  === "" ? "ban" :  req.config.ANTILINK_ACTION,
   SESSION_ID: process.env.SESSION_ID || req.config.SESSION_ID,
   LANG: req.config.LANG  === "" ? "EN" :  req.config.LANG,
-  HANDLERS: req.config.HANDLERS === "false" ? "^" : req.config.HANDLERS,
+  HANDLERS: process.env.HANDLERS === undefined ? "^" : ".",
   RMBG_KEY: req.config.RMBG_KEY  === "" ? false :  req.config.RMBG_KEY,
   BRANCH: req.config.BRANCH  === "" ? "latest" : req.config.BRANCH,
   PACKNAME: req.config.PACKNAME  === "" ? "Aurora" :  req.config.PACKNAME ,
-  WELCOME_MSG: req.MESSAGE_MEM.WELCOME_MSG  === "" ? "^" :  "Hi @user Welcome to @gname",
-  GOODBYE_MSG: req.MESSAGE_MEM.GOODBYE_MSG  === "" ? "^" :  "Hi @user It was Nice Seeing you",
-  AUTHOR: req.config.AUTHOR  === "" ? "^" :  "Alien-Alfa",
-  SUDO: req.config.SUDO  === "" ? "^" :  "",
+  WELCOME_MSG: req.MESSAGE_MEM.WELCOME_MSG  === "" ? "Hi @user Welcome to @gname" : req.MESSAGE_MEM.WELCOME_MSG,
+  GOODBYE_MSG: req.MESSAGE_MEM.GOODBYE_MSG  === "" ? "Hi @user It was Nice Seeing you" : req.MESSAGE_MEM.GOODBYE_MSG,
+  AUTHOR: req.config.AUTHOR  === "" ? "Alien-Alfa" :  req.config.AUTHOR,
+  SUDO: req.config.SUDO  === "" ? "" :  req.config.SUDO,
   HEROKU_APP_NAME: req.config.HEROKU_APP_NAME  === "" ? "^" :  process.env.HEROKU_APP_NAME,
   HEROKU_API_KEY: req.config.HEROKU_API_KEY  === "" ? "^" :  process.env.HEROKU_API_KEY,
-  OWNER_NAME: req.config.OWNER_NAME  === "" ? "^" :  "Alien-Alfa",
-  BOT_NAME: req.config.BOT_NAME  === "" ? "^" :  "Aurora",
+  OWNER_NAME: req.config.OWNER_NAME  === "" ? "Alien-Alfa" :  req.config.OWNER_NAME,
+  BOT_NAME: req.config.BOT_NAME  === "" ? "Aurora" :  req.config.BOT_NAME,
   WORK_TYPE: req.config.WORK_TYPE  === "" ?  "private" : req.config.WORK_TYPE,
-  MODE: req.config.MODE  === "" ? "^" :  "private",
-  ALIVE: req.MESSAGE_MEM.ALIVE  === "" ? "^" :  "```I am active```",
+  MODE: req.config.MODE  === "" ? "private" : req.config.MODE,
+  ALIVE: req.MESSAGE_MEM.ALIVE  === "" ? "```I am active```" : req.MESSAGE_MEM.ALIVE,
 
 
   FOOTER:  req.config.FOOTER  === "" ?  "Alien-Alfa" : req.config.FOOTER,
   THEME: req.config.THEME  === "" ?  "alfa" : req.config.THEME,
-  FONT_STYLE: req.config.FONT_STYLE  === "" ? "^" :  "1", //57
-  LANGUAGE: req.config.LANGUAGE  === "" ? "^" :  "EN", 
-  INTERNAL_MENU: req.config.INTERNAL_MENU  === "" ? "^" :  "active",
-  STORAGE_JID: req.config.STORAGE_JID  === "" ? "^" :  "",
+  FONT_STYLE: req.config.FONT_STYLE  === "" ? "1" : req.config.FONT_STYLE,
+  LANGUAGE: req.config.LANGUAGE  === "" ? "EN" :  req.config.LANGUAGE, 
+  INTERNAL_MENU: req.config.INTERNAL_MENU  === "" ? "active" :  req.config.INTERNAL_MENU,
+  STORAGE_JID: req.config.STORAGE_JID  === "" ? "" :  req.config.STORAGE_JID,
 
   B1:'╭════〘 ',
   B2:' 〙════⊷❍',

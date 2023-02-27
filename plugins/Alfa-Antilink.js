@@ -2,7 +2,7 @@
 
 const fs = require("fs")
 let alfadb = JSON.parse(fs.readFileSync('./database/settings.json'));
-  const { ANTILINK_ACTION, HANDLERS, BOT_NAME, OWNER_NAME, SUDO, FOOTER, THEME, FONT_STYLE } = require("../database/settings");
+  const { ANTILINK_ACTION, HANDLERS, BOT_NAME, OWNER_NAME, SUDO, FOOTER, THEME, FONT_STYLE, LANGUAGE, INTERNAL_MENU, MODE} = require("../database/settings");
 
 const chalk = require("chalk")
 const { writeFile, readFile } = require("fs");

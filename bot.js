@@ -15,36 +15,35 @@ const path = require("path");
 const events = require("./lib/event");
 const got = require("got");
 const {regnewuser, sudoBan, cloudspace} = require("./lib/alfabase");
+const config = require("./config");
 const { PluginDB } = require("./lib/database/plugins");
 const Greetings = require("./lib/Greetings");
 let { toBuffer } = require("qrcode");
-const { LOGS, SESSION_ID, HANDLERS, WORK_TYPE, SUDO, DATABASE } = require("./database/settings")
-;
-const { MakeSession } = require("./lib/session");
+const { WORK_TYPE, SUDO, DATABASE } = require("./database/settings");
 let jsox = require("./database/store.json")
 
 const port = process.env.PORT||3030
 const express = require("express");
 const app = express();
 let session = require("./session.json");
-let ibm = (session.creds.me.id).replace(":94", "").split('@')[0]
+let ibm = (session.creds.me.id).split(":")[0]
 
-let db = JSON.parse(fs.readFileSync('./database/settings.json'));
-let SUDOZI = SUDO
+let SUDOZI = SUDO ? "" : ibm
 
 
 const store = makeInMemoryStore({
   logger: pino().child({ level: "silent", stream: "store" }),
 });
+
 async function Singmulti() {
-  if (!fs.existsSync(__dirname+'/session.json'))
-  await process.send("reset") ;
-  if (!SESSION_ID === false);
-  await MakeSession(SESSION_ID,__dirname+'/session.json');
   const { state } = await useMultiFileAuthState(__dirname + "/session");
   await singleToMulti("session.json", __dirname + "/session", state);
 }
 Singmulti()
+
+
+
+
 require("events").EventEmitter.defaultMaxListeners = 0;
 
 
@@ -81,7 +80,9 @@ async function AlienAlfa() {
   conn.ev.on("creds.update", saveCreds);
 
   conn.ev.on("connection.update", async (s) => {
-
+    if (s.qr) {
+     // res.end(await toBuffer(s.qr));
+    }
 
     const { connection, lastDisconnect } = s;
     if (connection === "connecting") {
@@ -132,6 +133,7 @@ async function AlienAlfa() {
           Greetings(data, conn);
           sudoBan(data, conn);
         });
+
         conn.ev.on("messages.upsert", async (m) => {
           if (m.type !== "notify") return;
           const ms = m.messages[0];
@@ -140,7 +142,7 @@ async function AlienAlfa() {
           if (msg.body[1] && msg.body[1] == " ")
             msg.body = msg.body[0] + msg.body.slice(2);
           let text_msg = msg.body;
-          if (text_msg && LOGS)
+          if (text_msg && config.LOGS)
             console.log(
               `At : ${
                 msg.from.endsWith("@g.us")
@@ -163,7 +165,7 @@ async function AlienAlfa() {
                 ? text_msg[0] +
                   text_msg.slice(1).trim().split(" ")[0].toLowerCase()
                 : "";
-              msg.prefix = new RegExp(HANDLERS).test(text_msg)
+              msg.prefix = new RegExp(config.HANDLERS).test(text_msg)
                 ? text_msg.split("").shift()
                 : ",";
             }
@@ -197,10 +199,6 @@ async function AlienAlfa() {
       } catch (e) {
         console.log(e + "\n\n\n\n\n" + JSON.stringify(msg));
       }
-
-
-
-      
     }
     if (connection === "close") {
       console.log(s)
@@ -223,15 +221,16 @@ async function AlienAlfa() {
 } module.exports = AlienAlfa
 
 global.prefix;
-if(HANDLERS === "^" || false ){ prefix = '' }
-else { prefix = HANDLERS }
+if(config.HANDLERS === "^" || false ){ prefix = '' }
+else { prefix = config.HANDLERS }
 
 
 const html = fs.readFileSync("./Alien/check.html")
 app.get("/", (req, res) => res.type('html').send(html));
 app.listen(port, () => console.log(`AlienAlfa Server listening on port http://localhost:${port}!`));
 
-
-
+setTimeout(() => {
   AlienAlfa().catch((err) => console.log(err));
+}, 1500)
+
 
