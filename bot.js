@@ -223,7 +223,7 @@ async function AlienAlfa() {
 } module.exports = AlienAlfa
 
 global.prefix;
-if(config.HANDLERS === "^" || false ){ prefix = '' }
+if(config.HANDLERS === "^" || "false" ){ prefix = '' }
 else { prefix = config.HANDLERS }
 
 
