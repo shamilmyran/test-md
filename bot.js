@@ -19,7 +19,7 @@ const config = require("./config");
 const { PluginDB } = require("./lib/database/plugins");
 const Greetings = require("./lib/Greetings");
 let { toBuffer } = require("qrcode");
-const { WORK_TYPE, SUDO, DATABASE } = require("./database/settings");
+const { WORK_TYPE, SUDO, DATABASE } = require("./config");
 let jsox = require("./database/store.json")
 
 const port = process.env.PORT||3030
