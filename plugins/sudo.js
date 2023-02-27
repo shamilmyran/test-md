@@ -13,7 +13,7 @@ command({ pattern: "setsudo ?(.*)",
     type: "user" },
   async (message,match, m) => {
     let SUDO = parsedData.config.SUDO
-    var newSudo = (message.mention[0]).split("@")[0] || (message.reply_message.jid).split("@")[0]
+    var newSudo = (message.mention[0]).toString().split("@")[0] || (message.reply_message.jid).split("@")[0]
     if (!newSudo)
       return await m.sendMessage("*reply to a number*", { quoted: m });
     var setSudo = (SUDO + "," + newSudo).replace(/,,/g, ",");
