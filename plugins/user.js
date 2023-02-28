@@ -135,7 +135,7 @@ command({
         })
 
 
-     // client.sendMessage(message.jid, { delete: message.reply_message.key })
+    } else {    client.sendMessage(message.jid, { delete: message.reply_message.key })
     }
   }
 );
