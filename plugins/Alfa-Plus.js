@@ -169,7 +169,7 @@ command({
   type: "tool",
 },
 async (message, match, m) => {
-  if (message.reply_message.mtype !== "view_once" || "viewOnceMessageV2")return await message.reply("_Not a View Once_");
+  if (message.reply_message.mtype != "viewOnceMessageV2") return await message.reply("_Not a View Once_");
   let buff = await m.quoted.download();
   let jid = db.config.STORAGE_JID
   return await message.client.relayMessage(jid, buff, { messageId: m.quoted.key.id,});
