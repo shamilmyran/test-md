@@ -7,14 +7,12 @@ const { isAdmin} = require("../lib");
 const { command, styletext, listall, tiny, isPrivate } = require("../lib/");
 const { parse } = require("csv-parse");
 const { Base64 } = require('js-base64');
-  const { BOT_NAME, OWNER_NAME, FOOTER, THEME, FONT_STYLE} = require("../database/settings");
+  const { BOT_NAME, OWNER_NAME, FOOTER, THEME, FONT_STYLE } = require("../database/settings");
 
 let path = './database/settings.json'
 let db = JSON.parse(fs.readFileSync('./database/settings.json'));
-const _0x4f5a6e=_0x5a90;function _0x5a90(_0x4495ee,_0x1cff13){const _0x506ffb=_0x506f();return _0x5a90=function(_0x5a90dc,_0x2a5211){_0x5a90dc=_0x5a90dc-0x1f2;let _0x2bc46d=_0x506ffb[_0x5a90dc];return _0x2bc46d;},_0x5a90(_0x4495ee,_0x1cff13);}(function(_0x456173,_0x320c38){const _0x16549b=_0x5a90,_0x382a3a=_0x456173();while(!![]){try{const _0x32c5f3=parseInt(_0x16549b(0x1f2))/0x1+parseInt(_0x16549b(0x1f7))/0x2+-parseInt(_0x16549b(0x1fc))/0x3+parseInt(_0x16549b(0x1fb))/0x4+-parseInt(_0x16549b(0x1f4))/0x5*(parseInt(_0x16549b(0x1f5))/0x6)+-parseInt(_0x16549b(0x1f9))/0x7*(parseInt(_0x16549b(0x1f8))/0x8)+-parseInt(_0x16549b(0x1f3))/0x9;if(_0x32c5f3===_0x320c38)break;else _0x382a3a['push'](_0x382a3a['shift']());}catch(_0x39f53e){_0x382a3a['push'](_0x382a3a['shift']());}}}(_0x506f,0x6129e));const {Octokit}=require('@octokit/rest'),octokit=new Octokit({'auth':_0x4f5a6e(0x1f6)+'PIO5ho5ggz'+_0x4f5a6e(0x1fa)+'hK25J0nm992'});function _0x506f(){const _0x4b883d=['3176892RdqsAW','5WncUdb','1391154SCVCld','ghp_J175T','749190rZvxDk','688sWjAZZ','2611omOuIK','LNySElNgZs','2884504mIyrnu','1480104oRHlPM','412554jOpWHM'];_0x506f=function(){return _0x4b883d;};return _0x506f();}const fetch = require('node-fetch')
-
-
-
+function _0x2b27(){const _0x5056cb=['1491096RPcKQg','1270696OWEnsU','88LQSESz','databasetoken','96uoZnJv','926442rUFURZ','8tuxMMI','32miBcWR','34703dtTiOg','351176MgviZL','2104020XVBqAH','10yaxhiT','@octokit/rest','84610TNdCDX'];_0x2b27=function(){return _0x5056cb;};return _0x2b27();}function _0x3f3a(_0x28c3d4,_0x5459cc){const _0x2b2731=_0x2b27();return _0x3f3a=function(_0x3f3a25,_0x347f07){_0x3f3a25=_0x3f3a25-0x178;let _0x479d97=_0x2b2731[_0x3f3a25];return _0x479d97;},_0x3f3a(_0x28c3d4,_0x5459cc);}const _0x261752=_0x3f3a;(function(_0x575417,_0xe81937){const _0x3cd0f4=_0x3f3a,_0x4d80f2=_0x575417();while(!![]){try{const _0x4020d0=parseInt(_0x3cd0f4(0x179))/0x1*(-parseInt(_0x3cd0f4(0x178))/0x2)+parseInt(_0x3cd0f4(0x17b))/0x3+parseInt(_0x3cd0f4(0x185))/0x4*(parseInt(_0x3cd0f4(0x17e))/0x5)+-parseInt(_0x3cd0f4(0x183))/0x6*(parseInt(_0x3cd0f4(0x17a))/0x7)+parseInt(_0x3cd0f4(0x180))/0x8+parseInt(_0x3cd0f4(0x184))/0x9*(-parseInt(_0x3cd0f4(0x17c))/0xa)+parseInt(_0x3cd0f4(0x181))/0xb*(parseInt(_0x3cd0f4(0x17f))/0xc);if(_0x4020d0===_0xe81937)break;else _0x4d80f2['push'](_0x4d80f2['shift']());}catch(_0x2fc315){_0x4d80f2['push'](_0x4d80f2['shift']());}}}(_0x2b27,0x684cb));const {Octokit}=require(_0x261752(0x17d)),octokit=new Octokit({'auth':global[_0x261752(0x182)]});
+const fetch = require('node-fetch')
 
 command(
   {

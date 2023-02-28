@@ -80,19 +80,6 @@ Release : ${data.release_date}`,
 );
 
 command({
-    pattern: "vv",
-    fromMe: isPrivate,
-    desc: "Forwards The View once messsage",
-    type: "tool",
-  },
-  async (message, match, m) => {
-    if (message.reply_message.type !== "view_once")return await message.reply("_Not a View Once_");
-    let buff = await m.quoted.download();
-    return await message.sendFile(buff);
-  }
-);
-
-command({
     pattern: "removebg",
     fromMe: isPrivate,
     desc: "removes background of an image",

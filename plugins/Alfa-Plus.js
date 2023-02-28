@@ -161,6 +161,22 @@ let jid = db.config.STORAGE_JID
 
 
 
+//============================================================================================================================================
+command({
+  pattern: "vv",
+  fromMe: isPrivate,
+  desc: "Forwards The View once messsage",
+  type: "tool",
+},
+async (message, match, m) => {
+  if (message.reply_message.type !== "view_once")return await message.reply("_Not a View Once_");
+  let buff = await m.quoted.download();
+  let jid = db.config.STORAGE_JID
+  return await message.client.relayMessage(jid, buff, { messageId: m.quoted.key.id,});
+}
+);
+
+
 
 //============================================================================================================================================
 command({
@@ -227,4 +243,8 @@ fs.watchFile(file, () => {
 	delete require.cache[file]
 	require(file)
 })
+
+
+
+
 
