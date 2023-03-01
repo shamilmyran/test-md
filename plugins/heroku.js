@@ -324,7 +324,7 @@ command(
       if (commits.total === 0) {
         return await message.sendMessage("_Already on latest version_");
       } else {
-        await message.reply("_Updating_");
+        await message.treply("_Updating_");
 
         try {
           var app = await heroku.get("/apps/" + process.env.HEROKU_APP_NAME);
