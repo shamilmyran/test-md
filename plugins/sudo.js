@@ -18,13 +18,13 @@ command({ pattern: "setsudo ?(.*)",
       return await m.sendMessage("*reply to a number*", { quoted: m });
     var setSudo = (SUDO + "," + newSudo).replace(/,,/g, ",");
     setSudo = setSudo.startsWith(",") ? setSudo.replace(",", "") : setSudo;
-    await message.sendMessage(transplate("_new sudo numbers are:") + setSudo+'_', {
+    await message.sendMessage({text: transplate("_new sudo numbers are:") + setSudo+'_'}, {
       quoted: m,
     });
     parsedData.config.SUDO = setSudo
     writeFile('./database/settings.json', JSON.stringify(parsedData, null, 2), (err) => {
      if (err) {
-       return message.client.sendMessage(message.jid, transplate("Failed to Register Data"))
+       return message.client.sendMessage(message.jid, {text: transplate("Failed to Register Data")})
       }   
  });
   }
@@ -38,6 +38,6 @@ command({ pattern: "getsudo ?(.*)",
     let SUDO = parsedData.config.SUDO
 
 
-    await message.sendMessage(transplate("```" + `SUDO Numbers are : ${SUDO}` + "```"));
+    await message.sendMessage({text: transplate("```" + `SUDO Numbers are : ${SUDO}` + "```")});
   }
 );
