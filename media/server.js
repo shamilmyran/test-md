@@ -1,1 +1,122 @@
-const _0x1c62c8=_0x18c7;(function(_0x51fcc7,_0x4e85bd){const _0x102ee8=_0x18c7,_0x861570=_0x51fcc7();while(!![]){try{const _0x305bd0=-parseInt(_0x102ee8(0x1e7))/0x1+-parseInt(_0x102ee8(0x1ea))/0x2*(-parseInt(_0x102ee8(0x1fe))/0x3)+-parseInt(_0x102ee8(0x1f6))/0x4*(-parseInt(_0x102ee8(0x1e1))/0x5)+parseInt(_0x102ee8(0x205))/0x6+parseInt(_0x102ee8(0x1ee))/0x7*(parseInt(_0x102ee8(0x1e5))/0x8)+-parseInt(_0x102ee8(0x208))/0x9+parseInt(_0x102ee8(0x1f7))/0xa;if(_0x305bd0===_0x4e85bd)break;else _0x861570['push'](_0x861570['shift']());}catch(_0x20e526){_0x861570['push'](_0x861570['shift']());}}}(_0x2764,0x3648d));function _0x18c7(_0xea19a6,_0x2bb08e){const _0x276410=_0x2764();return _0x18c7=function(_0x18c732,_0x1a97fc){_0x18c732=_0x18c732-0x1df;let _0x221385=_0x276410[_0x18c732];return _0x221385;},_0x18c7(_0xea19a6,_0x2bb08e);}const chalk=require('chalk');let fs=require('fs');const {writeFile,readFile}=require(_0x1c62c8(0x202)),fetch=require(_0x1c62c8(0x1e4)),server=require(_0x1c62c8(0x1ed)),{MakeSession}=require('../lib/session');let conf=require(_0x1c62c8(0x1fc));const SESSION_ID=conf[_0x1c62c8(0x1e8)],got=require(_0x1c62c8(0x200));async function Singmulti(){const _0x172da1=_0x1c62c8;if(!fs[_0x172da1(0x1ef)](_0x172da1(0x204))){if(!fs['existsSync'](_0x172da1(0x204)))!SESSION_ID===![]&&(console[_0x172da1(0x1f5)](_0x172da1(0x1f0)),await MakeSession(SESSION_ID,'./session.json'));setTimeout(()=>{checkolduser();},0xbb8);}else checkolduser();}async function checkolduser(){const _0x4e9ddf=_0x1c62c8;if(!fs[_0x4e9ddf(0x1ef)]('./database/settings.json')){if(!fs[_0x4e9ddf(0x1ef)](_0x4e9ddf(0x204)))return Singmulti();let _0x347e47=require(_0x4e9ddf(0x1e6)),_0x214d64=await _0x347e47[_0x4e9ddf(0x1e3)]['me']['id'][_0x4e9ddf(0x1ff)](':')[0x0],_0x5c0c2d=await _0x347e47[_0x4e9ddf(0x1e3)]['me']['id']['split']('@')[0x1],_0x2474cd=_0x214d64+'@'+_0x5c0c2d,_0x919540=_0x2474cd+_0x4e9ddf(0x1ec);try{var {statusCode:_0x2a69c8}=await got(_0x4e9ddf(0x1f3)+_0x919540);_0x2a69c8==0xc8&&(console[_0x4e9ddf(0x1f5)](_0x4e9ddf(0x203)),existconf(_0x919540));}catch(_0x200c07){console[_0x4e9ddf(0x1f5)]('⭕\x20User\x20Not\x20Found'),newconf();}}else server();}async function newconf(){const _0x22909b=_0x1c62c8;try{let _0x72a95a=require(_0x22909b(0x1e6)),_0x351a32=await _0x72a95a[_0x22909b(0x1e3)]['me']['id'][_0x22909b(0x1ff)](':')[0x0];await fetch(_0x22909b(0x1fb))[_0x22909b(0x207)](_0x5aee06=>_0x5aee06[_0x22909b(0x1f2)]())[_0x22909b(0x207)](_0x3b1d80=>{const _0x18256d=_0x22909b;_0x3b1d80[_0x18256d(0x1f8)][_0x18256d(0x1e2)]=_0x351a32,writeFile('./database/settings.json',JSON[_0x18256d(0x1f4)](_0x3b1d80,null,0x2));}),console[_0x22909b(0x1f5)]('New\x20Database\x20Created!'),setTimeout(()=>{server(),authmake();},0xbb8);}catch(_0x4e1a49){return _0x4e1a49[_0x22909b(0x1e9)]()[_0x22909b(0x201)](_0x22909b(0x1df))?console['log'](chalk['redBright'](_0x22909b(0x1f9))):console['log'](_0x4e1a49);}}function _0x2764(){const _0x1eb483=['../session.json','280055HHgQwS','SESSION_ID','toString','4ESyMcS','from','.json','../server','25221zJJQuY','existsSync','Generating\x20Session','DB_AUTH_TOKEN','json','https://gist.github.com/Alien-Alfa/a216db893ba4f4a18d4f1476bfc1bb4d/raw/','stringify','log','272116zUNQrO','2382600SbFQdE','config','Bro\x20You\x20Are\x20Offline','env','https://gist.github.com/Alien-Alfa/0feba1fa2cc26c182a6e56a59ecd84f9/raw','../config','./database/settings.json','59703gEKvyv','split','got','includes','fs/promises','⭕\x20User\x20Found','./session.json','18996XSiWol','Previous\x20Database\x20Generated!','then','1496124GKzzLz','ENOTFOUND','base64','20iXZGIF','SUDO','creds','node-fetch','256kQMUgX'];_0x2764=function(){return _0x1eb483;};return _0x2764();}async function existconf(_0x2058cb){const _0xef76e9=_0x1c62c8;try{let _0x44ae4b=await'https://gist.github.com/Alien-Alfa/a216db893ba4f4a18d4f1476bfc1bb4d/raw/'+_0x2058cb;await fetch(_0x44ae4b)[_0xef76e9(0x207)](_0x396bf7=>_0x396bf7[_0xef76e9(0x1f2)]())['then'](_0x16ea23=>{const _0x4329b2=_0xef76e9;writeFile('./database/settings.json',JSON[_0x4329b2(0x1f4)](_0x16ea23,null,0x2));}),console[_0xef76e9(0x1f5)](_0xef76e9(0x206)),setTimeout(()=>{server(),authmake();},0xbb8);}catch(_0x3a0ea0){return _0x3a0ea0['toString']()['includes'](_0xef76e9(0x1df))?console[_0xef76e9(0x1f5)](chalk['redBright'](_0xef76e9(0x1f9))):console['log'](_0x3a0ea0);}}async function authmake(){readFile('./database/settings.json',async(_0x172438,_0x1bfbc3)=>{const _0x5b5a41=_0x18c7;if(_0x172438){console[_0x5b5a41(0x1f5)](_0x172438);return;}const _0x2eacf9=JSON['parse'](_0x1bfbc3);let _0x51e747=process[_0x5b5a41(0x1fa)][_0x5b5a41(0x1f1)]===undefined?'WncvYUEvY0EvWHcvYncvU0EvYUEvTVEvWWcvWkEvVmcvTWcvZHcvYXcvTVEvZHcvVHcvVVEvV0EvYkEvVkEvVWcvVXcvU0EvZGcvVFEvUkEvVGcvWmcvZFEvZUEvV0EvVWcvVFEvTVEvUkEvU1EvWncvUncvTUEv':process['env']['DB_AUTH_TOKEN'],_0x5781d8=Buffer['from'](_0x51e747,_0x5b5a41(0x1e0))[_0x5b5a41(0x1e9)]('utf-8'),_0x5d2b25=_0x5781d8[_0x5b5a41(0x1e9)]()['split']('/'),_0x2e1490='';for(let _0x4597b2 of _0x5d2b25){_0x2e1490+=Buffer[_0x5b5a41(0x1eb)](_0x4597b2+'==',_0x5b5a41(0x1e0))[_0x5b5a41(0x1e9)]('utf-8');}_0x2eacf9[_0x5b5a41(0x1f8)]['DB_AUTH_TOKEN']=_0x2e1490,writeFile(_0x5b5a41(0x1fd),JSON[_0x5b5a41(0x1f4)](_0x2eacf9,null,0x2));});}Singmulti();
+
+
+const chalk = require("chalk")
+let fs = require('fs')
+const {
+	writeFile,
+    readFile
+} = require('fs/promises')
+const fetch = require('node-fetch')
+const server = require('../server')
+const { MakeSession } = require("../lib/session");
+let conf = require('../config')
+const SESSION_ID = conf.SESSION_ID
+const got = require("got");
+
+
+
+
+
+async function Singmulti() {
+
+    if (!fs.existsSync('./session.json')) {
+
+	if (!fs.existsSync('./session.json'))
+	if (!SESSION_ID === false){
+		console.log('Generating Session')
+	await MakeSession(SESSION_ID,'./session.json')
+	}
+	setTimeout(() => {
+        checkolduser()
+	}, 3000)
+} else {
+    checkolduser()
+}
+  }
+
+
+
+
+
+async function checkolduser() {
+
+	if (!fs.existsSync("./database/settings.json")) {
+			if (!fs.existsSync("./session.json")) {
+return Singmulti()
+		
+}
+
+let session = require("../session.json");
+let ibm1 = await (session.creds.me.id).split(":")[0]
+let ibm2 = await (session.creds.me.id).split("@")[1]
+let ibm = ibm1+'@'+ibm2      
+let filenamzi = ibm + ".json"
+try{
+var { statusCode } = await got("https://gist.github.com/Alien-Alfa/a216db893ba4f4a18d4f1476bfc1bb4d/raw/"+filenamzi);
+if (statusCode == 200) {
+		console.log('⭕ User Found')
+			existconf(filenamzi)
+		}
+
+	}catch(err) 
+		{
+			console.log('⭕ User Not Found')
+			newconf()
+		}
+	
+
+} else { server() }
+
+}
+
+
+
+async function newconf(){
+	try{
+				let session = require("../session.json");
+		let ibm1 = await (session.creds.me.id).split(":")[0]
+				await fetch("https://gist.github.com/Alien-Alfa/0feba1fa2cc26c182a6e56a59ecd84f9/raw")
+		.then(response => response.json())
+		.then((data) => {
+	data.config.SUDO = ibm1
+			 writeFile(`./database/settings.json`, JSON.stringify(data, null, 2))
+		  })
+		console.log('New Database Created!') 
+		setTimeout(() => {
+			server()
+		}, 3000)
+		}catch(err){
+		if(err.toString().includes('ENOTFOUND')){ return 	console.log(chalk.redBright("Bro You Are Offline")) }
+		else { return console.log(err)}
+	}
+
+}
+
+
+async function existconf(filenamzi){
+
+
+try{
+	let bhai = await "https://gist.github.com/Alien-Alfa/a216db893ba4f4a18d4f1476bfc1bb4d/raw/"+filenamzi
+
+	await fetch(bhai)
+		  .then(response => response.json())
+		  .then((data) => {
+	  
+			   writeFile(`./database/settings.json`, JSON.stringify(data, null, 2))
+			})
+		  console.log('Previous Database Generated!') 
+		
+
+			setTimeout(() => {
+				server()
+			}, 3000)	
+	
+	}catch(err){
+		if(err.toString().includes('ENOTFOUND')){ return 	console.log(chalk.redBright("Bro You Are Offline")) }
+		else { return console.log(err)}
+	}
+
+}
+
+Singmulti()
