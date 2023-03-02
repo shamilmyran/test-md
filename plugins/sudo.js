@@ -37,7 +37,7 @@ command({ pattern: "getsudo ?(.*)",
   }, async (message, match, m) => {
     let SUDO = parsedData.config.SUDO
 
-
-   return await message.sendMessage( transplate("```" + `SUDO Numbers are : ${SUDO}` + "```"));
+let r = await transplate(`SUDO Numbers are : ${SUDO}`)
+   return await message.sendMessage('```'+r+'```');
   }
 );
