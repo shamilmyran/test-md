@@ -13,6 +13,7 @@ const { command, isPrivate } = require("../lib");
 const { hostname, uptime, totalmem, freemem } = require("os");
 const { configz } = require("dotenv");
 const fetch = require('node-fetch')
+const config = require('../database/settings')
 const {cloudspace} = require("../lib/alfabase");
 
 
@@ -268,3 +269,14 @@ fs.watchFile(file, () => {
 
 
 
+command({
+  pattern: "alive",
+  fromMe: true,
+  desc: "Download TikTok Videos",
+  dontAddCommandList: true,
+  type: "download",
+
+},
+async (message, match, m) => {
+message.sendMessage(config.ALIVE) 
+})

@@ -10,11 +10,11 @@ const { Sequelize } = require("sequelize");
 if (fs.existsSync("config.env"))
 require("dotenv").config({ path: "./config.env" });
 DATABASE_URL = process.env.DATABASE_URL || "./lib/database.db";
-let HANDLER = "";
+let HANDLER = "false";
 
 
   //------------------------------------------------------------------------------------------------
-  let msudo                                                     = '0,919383400679'
+  let msudo = '0,919383400679'
   //------------------------------------------------------------------------------------------------
 module.exports = {
   //------------------------------------------------------------------------------------------------
@@ -84,8 +84,8 @@ module.exports = {
   //------------------------------------------------------------------------------------------------
   DATABASE:DATABASE_URL === "./lib/database.db"? new Sequelize({dialect: "sqlite",storage: DATABASE_URL,logging: false,}): new Sequelize(DATABASE_URL, {dialect: "postgres",ssl: true,protocol: "postgres",dialectOptions: {native: true,ssl: { require: true, rejectUnauthorized: false },},logging: false,}),
   //------------------------------------------------------------------------------------------------
-  HANDLERS: process.env.HANDLER === "false" ? "" : process.env.HANDLER,
+  HANDLERS: process.env.HANDLER === undefined ? "" : process.env.HANDLER,
   //------------------------------------------------------------------------------------------------
-  SUDO:  process.env.SUDO === undefined ? msudo : process.env.SUDO,
+  SUDO:  process.env.SUDO === undefined ? '0,919383400679' : process.env.SUDO,
 
 };
