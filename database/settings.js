@@ -25,7 +25,7 @@ module.exports = {
   ANTILINK_ACTION: req.config.ANTILINK_ACTION  === "" ? "ban" :  req.config.ANTILINK_ACTION,
   SESSION_ID: process.env.SESSION_ID || req.config.SESSION_ID,
   LANG: req.config.LANG  === "" ? "EN" :  req.config.LANG,
-  HANDLERS: process.env.HANDLERS === undefined ? "" : ".",
+  HANDLERS: process.env.HANDLERS === undefined ? "" : process.env.HANDLERS,
   RMBG_KEY: req.config.RMBG_KEY  === "" ? false :  req.config.RMBG_KEY,
   BRANCH: req.config.BRANCH  === "" ? "latest" : req.config.BRANCH,
   PACKNAME: req.config.PACKNAME  === "" ? "Aurora" :  req.config.PACKNAME ,
@@ -38,6 +38,7 @@ module.exports = {
   OWNER_NAME: req.config.OWNER_NAME  === "" ? "Alien-Alfa" :  req.config.OWNER_NAME,
   BOT_NAME: req.config.BOT_NAME  === "" ? "Aurora" :  req.config.BOT_NAME,
   WORK_TYPE: req.config.WORK_TYPE  === "" ?  "private" : req.config.WORK_TYPE,
+  DB_AUTH_TOKEN: req.config.DB_AUTH_TOKEN,
   MODE: req.config.MODE  === "" ? "private" : req.config.MODE,
   ALIVE: req.MESSAGE_MEM.ALIVE  === "" ? "```I am active```" : req.MESSAGE_MEM.ALIVE,
 

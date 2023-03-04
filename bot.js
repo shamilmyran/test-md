@@ -25,8 +25,6 @@ let jsox = require("./database/settings.js")
 const port = process.env.PORT||3030
 const express = require("express");
 const app = express();
-let session = require("./session.json");
-let ibm = (session.creds.me.id).split(":")[0]
 
 let SUDOZi = jsox.SUDO
 
