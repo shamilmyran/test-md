@@ -26,7 +26,6 @@ const port = process.env.PORT||3030
 const express = require("express");
 const app = express();
 
-let SUDOZi = jsox.SUDO
 
 
 const store = makeInMemoryStore({
@@ -154,7 +153,7 @@ async function AlienAlfa() {
           events.commands.map(async (command) => {
             if (
               command.fromMe &&
-              !SUDOZi.split(",").includes(
+              !SUDO.split(",").includes(
                 msg.sender.split("@")[0] || !msg.isSelf
               )
             )

