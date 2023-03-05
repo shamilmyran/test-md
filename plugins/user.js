@@ -129,7 +129,7 @@ command({
             delete: {
                 remoteJid: message.jid,
                 fromMe: false,
-                id: message.key.id,
+                id: message.reply_message.key.id,
                 participant: message.key.participant
             }
         })

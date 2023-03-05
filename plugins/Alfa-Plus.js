@@ -16,6 +16,7 @@ const fetch = require('node-fetch')
 const config = require('../database/settings')
 const {cloudspace} = require("../lib/alfabase");
 
+const ytdl = require('ytdl-core');
 
 
 
@@ -280,3 +281,20 @@ command({
 async (message, match, m) => {
 message.sendMessage(config.ALIVE) 
 })
+
+
+command({
+  pattern: "trum",
+  fromMe: true,
+  desc: "Download TikTok Videos",
+  dontAddCommandList: true,
+  type: "download",
+
+},
+async (message, match, m) => {
+  let hoo = await ytdl(match)
+
+  message.reply( hoo )
+
+})
+
