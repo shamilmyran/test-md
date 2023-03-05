@@ -16,7 +16,7 @@ const fetch = require('node-fetch')
 const config = require('../database/settings')
 const {cloudspace} = require("../lib/alfabase");
 
-const ytdl = require('ytdl-core');
+const ytdl = require('ytdl');
 
 
 
