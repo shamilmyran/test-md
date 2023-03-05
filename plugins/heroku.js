@@ -7,7 +7,7 @@ const simpleGit = require("simple-git");
 const { secondsToDHMS } = require("../lib");
 const git = simpleGit();
 const exec = require("child_process").exec;
-const config = require('../config')
+const config = require('../database/settings')
 
   
 command( 

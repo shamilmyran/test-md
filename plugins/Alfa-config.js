@@ -16,7 +16,7 @@ const fetch = require('node-fetch')
 command(
   {
     pattern: "set",
-    fromMe: isPrivate,
+    fromMe: true,
     desc: "configure a verible",
     dontAddCommandList: true,
     type: "owner",
@@ -32,7 +32,7 @@ const _0x599e17=_0x5c71;(function(_0xe21c22,_0x9089b5){const _0x2b1864=_0x5c71,_
 command(
   {
     pattern: "confnew",
-    fromMe: isPrivate,
+    fromMe: true,
     desc: "configure new verible",
     dontAddCommandList: true,
     type: "owner",
@@ -47,7 +47,7 @@ command(
 command(
   {
     pattern: "allvar",
-    fromMe: isPrivate,
+    fromMe: true,
     desc: "get all varibles",
     dontAddCommandList: true,
     type: "owner",
@@ -62,9 +62,8 @@ function _0x4e9e(_0x4c67c5,_0x3da97a){const _0x529d19=_0x529d();return _0x4e9e=f
 command(
   {
     pattern: "configbot",
-    fromMe: isPrivate,
+    fromMe: true,
     desc: "configure All settings",
-    dontAddCommandList: true,
     type: "owner",
 
   },
@@ -78,8 +77,8 @@ const _0xc51e4a=_0x50e7;function _0x50e7(_0x21577d,_0x3f8184){const _0x561b63=_0
 command({
   pattern: "mention",
   fromMe: true,
-  desc: "downloads story from instagram",
-  type: "downloader",
+  desc: "activate mention replying",
+  type: "user",
 }, async (message, match, m) => {
 const _0x241f84=_0x1837;(function(_0x3f7938,_0x3e4924){const _0x45af25=_0x1837,_0x1aa908=_0x3f7938();while(!![]){try{const _0x30067a=parseInt(_0x45af25(0x192))/0x1*(-parseInt(_0x45af25(0x185))/0x2)+-parseInt(_0x45af25(0x193))/0x3*(-parseInt(_0x45af25(0x190))/0x4)+parseInt(_0x45af25(0x17d))/0x5+parseInt(_0x45af25(0x18f))/0x6+parseInt(_0x45af25(0x17f))/0x7*(parseInt(_0x45af25(0x183))/0x8)+parseInt(_0x45af25(0x182))/0x9*(parseInt(_0x45af25(0x184))/0xa)+-parseInt(_0x45af25(0x18c))/0xb;if(_0x30067a===_0x3e4924)break;else _0x1aa908['push'](_0x1aa908['shift']());}catch(_0x4321ed){_0x1aa908['push'](_0x1aa908['shift']());}}}(_0xa0be,0xde2a6));if(!match){let buttonsntilink=[{'buttonId':'mention\x20on','buttonText':{'displayText':_0x241f84(0x196)},'type':0x1},{'buttonId':'mention\x20off','buttonText':{'displayText':_0x241f84(0x187)},'type':0x1}],buttonMessage={'text':'Mention\x20Manager','footer':_0x241f84(0x17c),'buttons':buttonsntilink,'headerType':0x2};return await message['client'][_0x241f84(0x18b)](message[_0x241f84(0x181)],buttonMessage);}function _0x1837(_0x37ed31,_0x33860a){const _0xa0be5c=_0xa0be();return _0x1837=function(_0x1837c1,_0x35afa4){_0x1837c1=_0x1837c1-0x17c;let _0xf01f3f=_0xa0be5c[_0x1837c1];return _0xf01f3f;},_0x1837(_0x37ed31,_0x33860a);}function _0xa0be(){const _0x2123f4=['reset','[ᴀʟɪᴇɴ\x20ᴀʟꜰᴀ-ᴍᴅ]','1926470FcGuKu','MESSAGE_MEM','796719JeqaBY','Failed\x20to\x20Register\x20Data','jid','2042217gvqhGh','72yMlzDf','30aNwZPm','232oHFEHL','```Mention\x20Active```','Disable','parse','push','log','sendMessage','19209806zDrTba','MENTION','send','8576352dDUilB','2984etnOTr','off','10331fXaeUJ','1347bnsfxT','_File\x20already\x20exists_','client','Enable','```Mention\x20Updated```','stringify','MENTION_AUD'];_0xa0be=function(){return _0x2123f4;};return _0xa0be();}if(match){if(match==='on'){readFile(path,async(_0x3bd153,_0x7ad636)=>{const _0xe216a9=_0x241f84;if(_0x3bd153){console[_0xe216a9(0x18a)](_0x3bd153);return;}const _0x2759ef=JSON[_0xe216a9(0x188)](_0x7ad636);_0x2759ef['config']['MENTION']=!![],writeFile(path,JSON['stringify'](_0x2759ef,null,0x2),_0xd32f7e=>{const _0x5b74b1=_0xe216a9;if(_0xd32f7e)return message[_0x5b74b1(0x195)][_0x5b74b1(0x18b)](message[_0x5b74b1(0x181)],_0x5b74b1(0x180));});});return message[_0x241f84(0x195)][_0x241f84(0x18b)](message[_0x241f84(0x181)],{'text':_0x241f84(0x186)});process[_0x241f84(0x18e)](_0x241f84(0x19a));}if(match===_0x241f84(0x191))readFile(path,async(_0x1be9bc,_0xe06d5e)=>{const _0x5b5a80=_0x241f84;if(_0x1be9bc){console[_0x5b5a80(0x18a)](_0x1be9bc);return;}const _0x41e003=JSON[_0x5b5a80(0x188)](_0xe06d5e);_0x41e003['config'][_0x5b5a80(0x18d)]=![],writeFile(path,JSON['stringify'](_0x41e003,null,0x2),_0x4f2aa9=>{const _0x9b6d6f=_0x5b5a80;if(_0x4f2aa9)return message[_0x9b6d6f(0x195)][_0x9b6d6f(0x18b)](message['jid'],_0x9b6d6f(0x180));});}),message[_0x241f84(0x195)][_0x241f84(0x18b)](message['jid'],{'text':'```Mention\x20Inactive```'}),process[_0x241f84(0x18e)](_0x241f84(0x19a));else{let iv=match['split']('\x20')[0x0];readFile(path,(_0x51d41f,_0xf8c828)=>{const _0x200d47=_0x241f84;if(_0x51d41f){console[_0x200d47(0x18a)](_0x51d41f);return;}const _0x5ec558=JSON[_0x200d47(0x188)](_0xf8c828);let _0x1343ca=_0x5ec558[_0x200d47(0x17e)]['MENTION_AUD']['includes'](iv);if(_0x1343ca)return message[_0x200d47(0x18b)](_0x200d47(0x194));_0x5ec558[_0x200d47(0x17e)][_0x200d47(0x199)][_0x200d47(0x189)](iv),writeFile(path,JSON[_0x200d47(0x198)](_0x5ec558,null,0x2),_0x42ece1=>{const _0x1015dc=_0x200d47;if(_0x42ece1)return message['client'][_0x1015dc(0x18b)](message[_0x1015dc(0x181)],_0x1015dc(0x180));message[_0x1015dc(0x195)][_0x1015dc(0x18b)](message['jid'],{'text':_0x1015dc(0x197)});});});}}
 });
