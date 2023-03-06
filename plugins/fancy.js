@@ -9,19 +9,78 @@ command({
     desc: "converts text to fancy text",
     type: "tool",
   }, async (message, match, m) => {
+    let rows = [];
+    function isNumber(n){
+      return Number(n) == n
+  }
     if (!message.reply_message || !message.reply_message.text || !match ||isNaN(match)) {
-      let text = tiny(
-        "Fancy text generator\n\nReply to a message\nExample: .fancy 32\n\n"
-      );
-      listall("Fancy").forEach((txt, num) => {
-        text += `${(num += 1)} ${txt}\n`;
-      });
-      return await message.treply(text);
-    } else {
-      message.treply(styletext(message.reply_message.text, parseInt(match)));
+      let text = tiny( "Fancy text generator\n\nReply to a message\nExample: .fancy 32\n\n" );
+     return message.reply(text);
     }
+    if(isNumber(match.toString().split(' ')[0])){
+      let texzi = message.reply_message.text || match 
+      
+      message.reply(styletext(texzi, parseInt(match.toString().split(' ')[0])));
+
+
+    } if(!isNumber(match.toString().split(' ')[0])){
+    let numz = 1
+      let texzi = message.reply_message.text || match 
+      listall("Fancy").forEach((txt, num) => {
+
+        rows.push({
+          title: styletext(texzi, parseInt(numz++)),
+          rowId: ` `,
+         })
+      });
+
+
+      
+      let men = `
+      ╭═══〘 ${BOT_NAME} 〙═══⊷❍
+      ┃✧╭──────────────
+      ┃✧│ Fancy
+      ┃✧╰───────────────
+      ╰═════════════════⊷`
+      
+      
+          return await message.client.sendMessage(message.jid, {
+      text: styletext(men, parseInt(`${FONT_STYLE}`)),
+            buttonText: styletext("Options", parseInt(`${FONT_STYLE}`)),
+            sections: [
+              {
+                title: styletext("Select Font", parseInt(`${FONT_STYLE}`)),
+                rows: rows,
+              },
+            ],
+          });  
+        
+        } 
   }
 );
+
+
+
+
+
+
+  listall("Fancy").forEach((txt, num) => {
+
+    rows.push({
+      title: styletext(`${(num += 1)} ${txt}`, parseInt(`${FONT_STYLE}`)),
+      rowId: ` `,
+     })
+  });
+  
+
+
+
+
+
+
+
+
+
 command({
     pattern: "quotely",
     fromMe: isPrivate,
