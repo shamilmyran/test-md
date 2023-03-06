@@ -7,6 +7,7 @@ const { command, isPrivate, tiny, serif_B, clockString, styletext, listall, } = 
 const { ALIVE, HEROKU_APP_NAME, HANDLERS, WORK_TYPE, BOT_NAME, OWNER_NAME, SUDO, THEME, FONT_STYLE, INTERNAL_MENU } = require("../database/settings");
 const { hostname, uptime, totalmem, freemem } = require("os");
 const { config } = require("dotenv");
+const { hostname, uptime } = require("os");
 
 
 
@@ -1052,6 +1053,71 @@ if(THEME === "xasena"){
     
     }});
   
+
+
+
+    
+
+
+
+    command(
+      {
+        pattern: "diegoson",
+        fromMe: isPrivate,
+        dontAddCommandList: true,
+      },
+    async (message,match) => {
+      
+      let [date, time] = new Date()
+          .toLocaleString("en-IN", { timeZone: "Africa/Johannesburg" })
+          .split(",");
+    let menu = `
+    ╭───────────㋰
+    │╭──[ ${BOT_NAME} ]──㋰
+    ││USER :  ${message.pushName}
+    ││NUMBER :  ${m.sender.split("@")[0]}
+    ││WORKTYPE : ${WORK_TYPE}
+    │╰──㋰
+    │
+    │╭──[ "INFO BOT"]──㋰
+    ││BOTNAME : ${BOT_NAME}
+    ││TIME : ${time}
+    ││DATE : ${date}
+    ││OWNER : ${OWNER_NAME}
+    ││PREFIX : ${HANDLERS}
+    ││HOSTNAME : ${hostname().split("-")[0]}
+    │╰──㋰
+    ╰───────────㋰\n`
+    
+    return await message.client.sendMessage(message.jid, 
+    {
+    image: { url: 'https://telegra.ph/file/6086f101a36f7fc14bff6.png', },
+          caption: tiny(menu),
+          footer: tiny(`amarok md` ),
+          buttons: [
+            {
+            buttonId: "ping",
+            buttonText: {displayText: tiny("SPEED") },
+            },
+            {
+            buttonId: "list",
+            buttonText: {displayText: tiny("LIST") },
+            }
+          ],
+          
+          contextInfo: {
+            externalAdReply: {
+              title:  "AMAROK-MD",
+              body: "TREME-TITANS",
+              mediaType: 2,
+              thumbnail: logo,
+              mediaUrl: 'https://amarok-deploy.vercel.app',
+              sourceUrl: 'https://amarok-deploy.vercel.app',
+              showAdAttribution: true
+              }
+            }
+          }, {quoted: message})
+          })
   
   }
   
