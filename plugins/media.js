@@ -113,7 +113,9 @@ command({
     match = match || message.reply_message.text;
     if (ytIdRegex.test(match)) {
       yta(match.trim()).then(async ({ dl_link, title, thumb }) => {
-        let buff = await AddMp3Meta(dl_link, thumb, {
+        let urig = `https://ytdl.tiodevhost.my.id/?url=${match}&filter=audioonly&quality=highestaudio&contenttype=audio/mpeg`
+
+        let buff = await AddMp3Meta(urig, thumb, {
           title,
         });
         message.sendMessage(
@@ -126,7 +128,9 @@ command({
     search(match + "song").then(async ({ videos }) => {
       await message.treply(`_Downloading ${videos[0].title}_`);
       yta(videos[0].url).then(async ({ dl_link, title, thumb }) => {
-        let buff = await AddMp3Meta(dl_link, thumb, {
+        let urig = `https://ytdl.tiodevhost.my.id/?url=${match}&filter=audioonly&quality=highestaudio&contenttype=audio/mpeg`
+
+        let buff = await AddMp3Meta(urig, thumb, {
           title,
           artist: [videos[0].author],
         });
@@ -160,7 +164,9 @@ command({
     search(match).then(async ({ videos }) => {
       await message.treply(`_Downloading ${videos[0].title}_`);
       ytv(videos[0].url).then(({ dl_link, title }) => {
-        message.sendFromUrl(dl_link, { filename: title, quoted: message });
+
+        let urig = `https://ytdl.tiodevhost.my.id/?url=${match}&filter=audioandvideo&quality=highestvideo&contenttype=video/mp4`
+        message.sendFromUrl(urig, { filename: title, quoted: message });
       });
     });
   }
@@ -261,7 +267,9 @@ command({
     if (!ytIdRegex.test(match)) return await message.treply("_Invalid Url_");
     ytv(match).then(async ({ dl_link, title }) => {
       await message.treply(`_Downloading ${title}_`);
-      return await message.sendFromUrl(dl_link, {
+      let urig = `https://ytdl.tiodevhost.my.id/?url=${match}&filter=audioandvideo&quality=highestvideo&contenttype=video/mp4`
+
+      return await message.sendFromUrl(urig, {
         filename: title,
         quoted: message,
       });
@@ -281,7 +289,9 @@ command({
     if (!ytIdRegex.test(match)) return await message.treply("_Invalid Url_");
     yta(match).then(async ({ dl_link, title, thumb }) => {
       await message.treply(`_Downloading ${title}_`);
-      let buff = await AddMp3Meta(dl_link, thumb, {
+      let urig = `https://ytdl.tiodevhost.my.id/?url=${match}&filter=audioonly&quality=highestaudio&contenttype=audio/mpeg`
+
+      let buff = await AddMp3Meta(urig, thumb, {
         title,
       });
       return await message.sendMessage(
