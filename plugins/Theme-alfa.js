@@ -7,7 +7,6 @@ const { command, isPrivate, tiny, serif_B, clockString, styletext, listall, } = 
 const { ALIVE, HEROKU_APP_NAME, HANDLERS, WORK_TYPE, BOT_NAME, OWNER_NAME, SUDO, THEME, FONT_STYLE, INTERNAL_MENU } = require("../database/settings");
 const { hostname, uptime, totalmem, freemem } = require("os");
 const { config } = require("dotenv");
-const { hostname, uptime } = require("os");
 
 
 
@@ -1000,25 +999,25 @@ if(THEME === "xasena"){
     }
     
 
-            let men = `╭═══〘 ${BOT_NAME} 〙═══⊷❍
-            ┃✧╭──────────────
-            ┃✧│
-            ┃✧│ Owner : ${OWNER_NAME}
-            ┃✧│ User : ${message.pushName}
-            ┃✧│ Mode : ${WORK_TYPE}
-            ┃✧│ Total RAM: ${avbMem.toFixed(2)} GB
-            ┃✧│ Available RAM: ${allFreeMem.toFixed(0)}GB / ${avbMem.toFixed(2)}GB
-            ┃✧│ Commands: ${events.commands.length}
-            ┃✧│ Uptime: ${clockString(uptime())}
-            ┃✧│ Version: ${require("../package.json").version}
-            ┃✧│
-            ┃✧│
-            ┃✧│  ▎▍▌▌▉▏▎▌▉▐▏▌▎
-            ┃✧│  ▎▍▌▌▉▏▎▌▉▐▏▌▎
-            ┃✧│   ${ await message.pushName}
-            ┃✧│ 
-            ┃✧╰───────────────
-            ╰═════════════════⊷`
+let men = `╭═══〘 ${BOT_NAME} 〙═══⊷❍
+┃✧╭──────────────
+┃✧│
+┃✧│ Owner : ${OWNER_NAME}
+┃✧│ User : ${message.pushName}
+┃✧│ Mode : ${WORK_TYPE}
+┃✧│ Total RAM: ${avbMem.toFixed(2)} GB
+┃✧│ Available RAM: ${allFreeMem.toFixed(0)}GB / ${avbMem.toFixed(2)}GB
+┃✧│ Commands: ${events.commands.length}
+┃✧│ Uptime: ${clockString(uptime())}
+┃✧│ Version: ${require("../package.json").version}
+┃✧│
+┃✧│
+┃✧│  ▎▍▌▌▉▏▎▌▉▐▏▌▎
+┃✧│  ▎▍▌▌▉▏▎▌▉▐▏▌▎
+┃✧│   ${ await message.pushName}
+┃✧│ 
+┃✧╰───────────────
+╰═════════════════⊷`
           
 
             const sections = [
@@ -1120,5 +1119,4 @@ if(THEME === "xasena"){
           })
   
   }
-  
   
