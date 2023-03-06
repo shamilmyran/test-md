@@ -48,7 +48,7 @@ command(
 
 
 command({on: "text",fromMe: false,}, async (message, match, m) => {
-  let cmdz = match.split(' ')[0]
+  let cmdz = match.toString().split(' ')[0]
   switch (cmdz) {
 
   	case 'bass':
