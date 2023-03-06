@@ -9,7 +9,6 @@ command({
     desc: "converts text to fancy text",
     type: "tool",
   }, async (message, match, m) => {
-    let rows = [];
     function isNumber(n){
       return Number(n) == n
   }
@@ -24,6 +23,8 @@ command({
 
 
     } if(!isNumber(match.toString().split(' ')[0])){
+      let rows = [];
+
     let numz = 1
       let texzi = message.reply_message.text || match 
       listall("Fancy").forEach((txt, num) => {
