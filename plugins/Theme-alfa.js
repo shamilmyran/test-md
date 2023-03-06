@@ -1065,7 +1065,7 @@ let men = `╭═══〘 ${BOT_NAME} 〙═══⊷❍
         fromMe: isPrivate,
         dontAddCommandList: true,
       },
-    async (message,match) => {
+    async (message,match,m) => {
       
       let [date, time] = new Date()
           .toLocaleString("en-IN", { timeZone: "Africa/Johannesburg" })
