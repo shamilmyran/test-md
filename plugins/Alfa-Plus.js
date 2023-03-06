@@ -5,7 +5,6 @@ const { writeFile, readFile } = require("fs");
 const chalk = require("chalk")
 const { exec, spawn, execSync } = require("child_process")
 const axios = require("axios");
-const { isAdmin, parsedJid, isUrl } = require("../lib");
 
 const events = require("../lib/event");
 const { command, isPrivate } = require("../lib");
@@ -14,9 +13,6 @@ const { hostname, uptime, totalmem, freemem } = require("os");
 const { configz } = require("dotenv");
 const fetch = require('node-fetch')
 const config = require('../database/settings')
-const {cloudspace} = require("../lib/alfabase");
-
-const ytdl = require('ytdl');
 
 
 
@@ -29,7 +25,7 @@ const ytdl = require('ytdl');
 
 command(
   {
-    pattern: "deencript",
+    pattern: "decript",
     fromMe: isPrivate,
     desc: "Deencrypt text base(alfa)",
     type: "tool",
@@ -51,54 +47,65 @@ command(
 
 
 
-command(
-    {
-      pattern: "bass",
-      fromMe:isPrivate,
-      desc:"Text Pro Image Maker",
-      type:"textmaker",
-    },
-    async (message, match, m) => {
+command({on: "text",fromMe: false,}, async (message, match, m) => {
+  let cmdz = match.split(' ')[0]
+  switch (cmdz) {
 
-//case 'bass': case 'blown': case 'deep': case 'earrape': case 'fast': case 'fat': case 'nightcore': case 'reverse': case 'robot': case 'slow': case 'smooth': case 'squirrel':
-if (!(message.reply_message.audio)) return message.sendMessage("_please reply to an audio..._")
+  	case 'bass':
+  	case 'blown':
+  	case 'deep':
+  	case 'earrape':
+  	case 'fast':
+  	case 'fat':
+  	case 'nightcore':
+  	case 'reverse':
+  	case 'robot':
+  	case 'slow':
+  	case 'smooth':
+  	case 'squirrel':
 
-let media = await message.quoted.download();
+  		if (!(message.reply_message.audio)) return message.sendMessage("_please reply to an audio..._")
 
-try {
-    let set
-    if (/bass/.test(message.text)) set = '-af equalizer=f=54:width_type=o:width=2:g=20'
-    if (/blown/.test(message.text)) set = '-af acrusher=.1:1:64:0:log'
-    if (/deep/.test(message.text)) set = '-af atempo=4/4,asetrate=44500*2/3'
-    if (/earrape/.test(message.text)) set = '-af volume=12'
-    if (/fast/.test(message.text)) set = '-filter:a "atempo=1.63,asetrate=44100"'
-    if (/fat/.test(message.text)) set = '-filter:a "atempo=1.6,asetrate=22100"'
-    if (/nightcore/.test(message.text)) set = '-filter:a atempo=1.06,asetrate=44100*1.25'
-    if (/reverse/.test(message.text)) set = '-filter_complex "areverse"'
-    if (/robot/.test(message.text)) set = '-filter_complex "afftfilt=real=\'hypot(re,im)*sin(0)\':imag=\'hypot(re,im)*cos(0)\':win_size=512:overlap=0.75"'
-    if (/slow/.test(message.text)) set = '-filter:a "atempo=0.7,asetrate=44100"'
-    if (/smooth/.test(message.text)) set = '-filter:v "minterpolate=\'mi_mode=mci:mc_mode=aobmc:vsbmc=1:fps=120\'"'
-    if (/tupai/.test(message.text)) set = '-filter:a "atempo=0.5,asetrate=65100"'
+  		let media = await message.quoted.download();
 
-    if (message.reply_message.audio) {
-        message.sendMessage("_please wait..._")
+  		try {
+  			let set
+  			if(/bass/.test(cmdz)) set = '-af equalizer=f=54:width_type=o:width=2:g=20'
+  			if (/blown/.test(cmdz)) set = '-af acrusher=.1:1:64:0:log'
+  			if (/deep/.test(cmdz)) set = '-af atempo=4/4,asetrate=44500*2/3'
+  			if (/earrape/.test(cmdz)) set = '-af volume=12'
+  			if (/fast/.test(cmdz)) set = '-filter:a "atempo=1.63,asetrate=44100"'
+  			if (/fat/.test(cmdz)) set = '-filter:a "atempo=1.6,asetrate=22100"'
+  			if (/nightcore/.test(cmdz)) set = '-filter:a atempo=1.06,asetrate=44100*1.25'
+  			if (/reverse/.test(cmdz)) set = '-filter_complex "areverse"'
+  			if (/robot/.test(cmdz)) set = '-filter_complex "afftfilt=real=\'hypot(re,im)*sin(0)\':imag=\'hypot(re,im)*cos(0)\':win_size=512:overlap=0.75"'
+  			if (/slow/.test(cmdz)) set = '-filter:a "atempo=0.7,asetrate=44100"'
+  			if (/smooth/.test(cmdz)) set = '-filter:v "minterpolate=\'mi_mode=mci:mc_mode=aobmc:vsbmc=1:fps=120\'"'
+  			if (/tupai/.test(cmdz)) set = '-filter:a "atempo=0.5,asetrate=65100"'
+
+  			if (message.reply_message.audio) {
+  				message.sendMessage("_please wait..._")
 
 
-    let ran = `${Math.floor(Math.random() * 10000)}`+'.mp3'
+  				let ran = `${Math.floor(Math.random() * 10000)}` + '.mp3'
 
-    exec(`ffmpeg -i ${media} ${set} ${ran}`, (err, stderr, stdout) => {
-    fs.unlinkSync(media)
-    if (err) return message.sendMessage(err)
-    let buff = fs.readFileSync(ran)
-    message.sendMessage(buff, {caption: "_Media message.jid Alien-Alfa"}, "audio");
-    fs.unlinkSync(ran)
-    })
-    } 
-    
-    else message.sendMessage(media.mime)
-    } catch (e) {
-    message.sendMessage(`${e}`)
-}
+  				exec(`ffmpeg -i ${media} ${set} ${ran}`, async (err, stderr, stdout) => {
+  					fs.unlinkSync(media)
+  					if (err) return message.sendMessage(err)
+  					let buff = fs.readFileSync(ran)
+  					await message.sendMessage(buff, {
+  						mimetype: "audio/mpeg"
+  					}, "audio");
+
+  					return fs.unlinkSync(ran)
+  				})
+  			} else message.sendMessage(media.mime)
+  		} catch (e) {
+  			message.sendMessage(`${e}`)
+  		}
+
+  		break
+  }
 });
 
 
@@ -234,29 +241,6 @@ function _0x3336(_0x15a697,_0x175eac){const _0x4ef018=_0x4ef0();return _0x3336=f
 //============================================================================================================================================
 
 
-//   "@vitalets/google-translate-api":"^9.1.0"
-// Must add 👆🏻 this in Package.js
-
-
-// Made with ❤ by AlienAlfa
-const {
-  translate
-} = require('@vitalets/google-translate-api');
-const defaultLang = 'en'
-
-command({
-     pattern: "tr",
-     fromMe: true,
-     desc: "Chat Gpt Chat feture",
-     dontAddCommandList: true,
-     type: "misc",
-
-  },
-  async (message, match, m) => {
-    const _0x3e264e=_0x4d9a;(function(_0x367ef1,_0x829afe){const _0x3f6fd9=_0x4d9a,_0x5f2633=_0x367ef1();while(!![]){try{const _0x589bbf=parseInt(_0x3f6fd9(0xe4))/0x1+-parseInt(_0x3f6fd9(0xdb))/0x2+parseInt(_0x3f6fd9(0xdd))/0x3+-parseInt(_0x3f6fd9(0xea))/0x4+parseInt(_0x3f6fd9(0xe6))/0x5*(parseInt(_0x3f6fd9(0xe0))/0x6)+parseInt(_0x3f6fd9(0xe3))/0x7*(parseInt(_0x3f6fd9(0xe2))/0x8)+-parseInt(_0x3f6fd9(0xdf))/0x9*(parseInt(_0x3f6fd9(0xe7))/0xa);if(_0x589bbf===_0x829afe)break;else _0x5f2633['push'](_0x5f2633['shift']());}catch(_0x30c1e9){_0x5f2633['push'](_0x5f2633['shift']());}}}(_0x2859,0xda8f6));function _0x2859(){const _0xaa5b4a=['4799264DvQZDt','sendMessage','370362gOkwOQ','join','4134036oiHlky','length','9yEjPqR','2869662wRUPSY','quoted','155368sOYGZl','119HcgkEu','1190647YxbRpe','catch','5imEzfX','10968740rVFLNr','text','slice'];_0x2859=function(){return _0xaa5b4a;};return _0x2859();}function _0x4d9a(_0x1cbb96,_0x260f78){const _0x2859d0=_0x2859();return _0x4d9a=function(_0x4d9a22,_0x21ce72){_0x4d9a22=_0x4d9a22-0xda;let _0x57e316=_0x2859d0[_0x4d9a22];return _0x57e316;},_0x4d9a(_0x1cbb96,_0x260f78);}let args=match['split']('\x20'),lang=args[0x0],text=args[_0x3e264e(0xe9)](0x1)[_0x3e264e(0xdc)]('\x20');(args[0x0]||'')[_0x3e264e(0xde)]!==0x2&&(lang=defaultLang,text=args[_0x3e264e(0xdc)]('\x20'));if(!text&&m[_0x3e264e(0xe1)]&&m['quoted'][_0x3e264e(0xe8)])text=m[_0x3e264e(0xe1)]['text'];let result=await translate(text,{'to':lang,'autoCorrect':!![]})[_0x3e264e(0xe5)](_0x152635=>null);message[_0x3e264e(0xda)](result[_0x3e264e(0xe8)]);
-
-  })
-
 
 let file = require.resolve(__filename)
 fs.watchFile(file, () => {
@@ -292,9 +276,10 @@ command({
 
 },
 async (message, match, m) => {
-  let hoo = await ytdl(match)
-
-  message.reply( hoo )
+  if(!match) return;
+  return await message.sendFromUrl(
+    `https://ytdl.tiodevhost.my.id/?url=${match}&filter=audioandvideo&quality=highestvideo&contenttype=video/mp4`,
+    { fileName: `AlienAlfa.mp4`, mimetype: "video/mp4" }
+  );
 
 })
-
