@@ -61,17 +61,6 @@ command({
 );
 
 
-
-
-
-
-  listall("Fancy").forEach((txt, num) => {
-
-    rows.push({
-      title: styletext(`${(num += 1)} ${txt}`, parseInt(`${FONT_STYLE}`)),
-      rowId: ` `,
-     })
-  });
   
 
 
