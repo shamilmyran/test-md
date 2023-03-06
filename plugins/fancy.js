@@ -12,7 +12,7 @@ command({
     function isNumber(n){
       return Number(n) == n
   }
-    if (!message.reply_message || !message.reply_message.text || !match ||isNaN(match)) {
+    if (!message.reply_message || !message.reply_message.text || !match ) {
       let text = tiny( "Fancy text generator\n\nReply to a message\nExample: .fancy 32\n\n" );
      return message.reply(text);
     }
