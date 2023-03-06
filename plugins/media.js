@@ -160,7 +160,9 @@ command({
       search(match).then(async ({ videos }) => { let title = await videos[0].title 
         let urig = `https://ytdl.tiodevhost.my.id/?url=${videos[0].url}&filter=audioandvideo&quality=highestvideo&contenttype=video/mp4`
 
-        message.sendFromUrl(urig, { filename: title });
+        message.sendFromUrl(urig, {
+          caption :title,
+           filename: title });
       });
     }
     search(match).then(async ({ videos }) => {
@@ -168,7 +170,9 @@ command({
       search(match).then(async ({ videos }) => { let title = await videos[0].title 
 
         let urig = `https://ytdl.tiodevhost.my.id/?url=${videos[0].url}&filter=audioandvideo&quality=highestvideo&contenttype=video/mp4`
-        message.sendFromUrl(urig, { filename: title, quoted: message });
+        message.sendFromUrl(urig, { filename: title,
+          caption :title,
+          quoted: message });
       });
     });
   }
@@ -273,6 +277,7 @@ command({
 
       return await message.sendFromUrl(urig, {
         filename: title,
+        caption :title,
         quoted: message,
       });
     });

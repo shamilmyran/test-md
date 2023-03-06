@@ -6,7 +6,7 @@ command({
     desc: "Get connection QR",
     type: "tool",
   }, async (message, match, m) => {
-    message.treply("``Processing QR ...```")
+    message.treply("```Processing QR```")
     for (let index = 0; index < 5; index++) {
       await sleep(30 * 1000);
       await message.sendFromUrl("https://cheeryfinedesign.alien-alfa.repl.co", {

@@ -6,12 +6,17 @@ const {
   getStatus,
   toggleStatus,
 } = require("../lib/database/greetings");
-command({
-    pattern: "welcome ?(.*)",
+
+
+command(
+  {
+    pattern: "welcome",
     fromMe: true,
     desc: "description",
     type: "group",
-  }, async (message, match, m) => {
+  },
+  async (message, match, m) => {
+
     let {prefix} = message
     if (!message.isGroup) return;
     let status = await getStatus(message.jid, "welcome");
@@ -62,12 +67,15 @@ command({
   }
 );
 
-command({
-    pattern: "goodbye ?(.*)",
+
+command(
+  {
+    pattern: "goodbye",
     fromMe: true,
     desc: "description",
     type: "group",
-  }, async (message, match, m) => {
+  },
+  async (message, match, m) => {
     if (!message.isGroup) return;
     let status = await getStatus(message.jid, "goodbye");
     let toggler = status ? "off" : "on";
