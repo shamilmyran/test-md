@@ -13,7 +13,11 @@ command({ pattern: "setsudo ?(.*)",
     type: "user" },
   async (message,match, m) => {
     let SUDO = parsedData.config.SUDO
-    var newSudo = (message.mention[0]).toString().split("@")[0] || (message.reply_message.jid).split("@")[0]
+    var newSudo;
+    if(match.include("@")){
+      newSudo = (match).toString().split("@")[1]}
+    if(message.reply_message){
+      newSudo = (message.reply_message.jid).split("@")[0]}
     if (!newSudo)
       return await m.sendMessage("*reply to a number*", { quoted: m });
     var setSudo = (SUDO + "," + newSudo).replace(/,,/g, ",");
@@ -41,3 +45,5 @@ let r = await transplate(`SUDO Numbers are : ${SUDO}`)
    return await message.sendMessage('```'+r+'```');
   }
 );
+
+
