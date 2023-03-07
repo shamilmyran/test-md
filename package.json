@@ -32,7 +32,7 @@
   },
   "homepage": "https://github.com/Neeraj-x0/Alien-Alfa#readme",
   "dependencies": {
-    "@adiwajshing/baileys": "^5.0.0",
+    "@adiwajshing/baileys": "git+https://github.com/A-d-i-t-h-y-a-n/Baileys.js.git",
     "@adiwajshing/keyed-db": "^0.2.4",
     "@neeraj-x0/textpro": "^1.0.3",
     "awesome-phonenumber": "^3.4.0",
@@ -85,6 +85,7 @@
     "perf_hooks":"^0.0.1",
     "csv-parse":"^5.3.5",
     "js-base64":"^3.7.5",
-    "openai":"^3.1.0"
+    "openai":"^3.1.0",
+    "ytdl":"^1.4.1"
     }
 }

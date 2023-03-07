@@ -20,6 +20,21 @@ var avbMem = (totalmem / (1024 * 1024 * 1024))
 
     if(THEME === "alfa"){
 if( INTERNAL_MENU === 'active'){
+  command({
+    pattern: "ping",
+    fromMe: isPrivate,
+    desc: "To check ping",
+    type: "user",
+  }, async (message, match, m) => {
+    const start = new Date().getTime();
+    await message.sendMessage("```Processing...```");
+    const end = new Date().getTime();
+    return await message.sendMessage("```"+(end - start) + "ms```"
+    );
+  }
+);
+
+
 
   var gmsg="",ownmsg="",dlmsg="",utilmsg="",srmsg="",tms="",lms="",edmsg="",xmediazi="";
 
@@ -913,18 +928,195 @@ if(THEME === "xasena"){
   
   }// if asena
 
-  command({
-    pattern: "ping",
-    fromMe: isPrivate,
-    desc: "To check ping",
-    type: "user",
-  }, async (message, match, m) => {
-    const start = new Date().getTime();
-    await message.sendMessage("```Processing...```");
-    const end = new Date().getTime();
-    return await message.sendMessage("```"+(end - start) + "ms```"
-    );
+  if(THEME === "normal"){
+
+  var gmsg="",ownmsg="",dlmsg="",utilmsg="",srmsg="",tms="",lms="",edmsg="",xmediazi="";
+
+  command(
+    {
+      pattern: "menu",
+      fromMe: isPrivate,
+      desc: "Show All commands",
+      dontAddCommandList: true,
+      type: "theme",
+  
+    },
+    async (message, match, m) => {
+      let { prefix } = message;
+      if(HANDLERS === "^")
+      var presix = ''
+      else 
+      var presix = prefix
+     if (match) {
+
+      for (let i of events.commands) {
+        if (i.pattern.test(message.prefix + match))
+          message.treply(`
+  ╭════〘 *Command Info* 〙════⊷❍
+  ┃✧╭─────────────────
+  ┃ \`\`\`Command : ${message.prefix}${match.trim()}\`\`\`
+  ┃ \`\`\`Description : ${i.desc}\`\`\`
+  ┃✧╰─────────────────
+  ╰══════════════════⊷❍`
+            );
+        }
+      } else {
+
+      let [date, time] = new Date()
+        .toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })
+        .split(",");
+
+
+
+    
+    
+    
+    for (let i of events.commands) {
+    if (i.type === 'group') {
+      gmsg += `┃✧│ ${message.prefix}${i.pattern.toString().match(/(\W*)([A-Za-zğüşıiöç1234567890 ]*)/)[2]} \n`
+    };
+    if (i.type === 'downloader') {
+      dlmsg += `┃✧│ ${message.prefix}${i.pattern.toString().match(/(\W*)([A-Za-zğüşıiöç1234567890 ]*)/)[2]} \n`
+    };
+    if (i.type === 'textmaker') {
+      tms += `┃✧│ ${message.prefix}${i.pattern.toString().match(/(\W*)([A-Za-zğüşıiöç1234567890 ]*)/)[2]} \n`
+    };
+    if (i.type === 'user') {
+      ownmsg += `┃✧│ ${message.prefix}${i.pattern.toString().match(/(\W*)([A-Za-zğüşıiöç1234567890 ]*)/)[2]} \n`
+    };
+    if (i.type === 'edit') {
+      edmsg += `┃✧│ ${message.prefix}${i.pattern.toString().match(/(\W*)([A-Za-zğüşıiöç1234567890 ]*)/)[2]} \n`
+    };
+    if (i.type === 'xediazi') {
+      xmediazi += `┃✧│ ${message.prefix}${i.pattern.toString().match(/(\W*)([A-Za-zğüşıiöç1234567890 ]*)/)[2]} \n`
+    };
+    if (i.type === 'search') {
+      srmsg += `┃✧│ ${message.prefix}${i.pattern.toString().match(/(\W*)([A-Za-zğüşıiöç1234567890 ]*)/)[2]} \n`
+    };
+    if (i.type === 'tool') {
+      utilmsg += `┃✧│ ${message.prefix}${i.pattern.toString().match(/(\W*)([A-Za-zğüşıiöç1234567890 ]*)/)[2]} \n`
+    };
+    }
+    
+
+let men = `╭═══〘 ${BOT_NAME} 〙═══⊷❍
+┃✧╭──────────────
+┃✧│
+┃✧│ Owner : ${OWNER_NAME}
+┃✧│ User : ${message.pushName}
+┃✧│ Mode : ${WORK_TYPE}
+┃✧│ Total RAM: ${avbMem.toFixed(2)} GB
+┃✧│ Available RAM: ${allFreeMem.toFixed(0)}GB / ${avbMem.toFixed(2)}GB
+┃✧│ Commands: ${events.commands.length}
+┃✧│ Uptime: ${clockString(uptime())}
+┃✧│ Version: ${require("../package.json").version}
+┃✧│
+┃✧│
+┃✧│  ▎▍▌▌▉▏▎▌▉▐▏▌▎
+┃✧│  ▎▍▌▌▉▏▎▌▉▐▏▌▎
+┃✧│   ${ await message.pushName}
+┃✧│ 
+┃✧╰───────────────
+╰═════════════════⊷`
+          
+
+            const sections = [
+             {
+            title: styletext("These Are The list", parseInt(`${FONT_STYLE}`)),
+            rows: [
+              {title: styletext(`All Menu`, parseInt(`${FONT_STYLE}`)), rowId: `${presix}allmenu`},
+              {title: styletext(`Edit List`, parseInt(`${FONT_STYLE}`)), rowId: `${presix}msearch`},
+              {title: styletext(`Search List`, parseInt(`${FONT_STYLE}`)), rowId: `${presix}allmenu`},
+              {title: styletext(`Downloads List`, parseInt(`${FONT_STYLE}`)), rowId: `${presix}mdownloader`},
+              {title: styletext(`X-media List`, parseInt(`${FONT_STYLE}`)), rowId: `${presix}mxediazi`},
+              {title: styletext(`Tools List`, parseInt(`${FONT_STYLE}`)), rowId: `${presix}mtool`},
+              {title: styletext(`Owner List`, parseInt(`${FONT_STYLE}`)), rowId: `${presix}muser`},
+              {title: styletext(`Logomaker List`, parseInt(`${FONT_STYLE}`)), rowId: `${presix}mtextmaker`},
+              {title: styletext(`Group List`, parseInt(`${FONT_STYLE}`)), rowId: `${presix}mgroup`},
+            ]
+              },
+          ]
+          
+          const listMessage = {
+            text: styletext(men, parseInt(`${FONT_STYLE}`)),
+            footer: "AlienAlfa",
+            buttonText: styletext("Show menu", parseInt(`${FONT_STYLE}`)),
+            sections
+          }
+          
+          return await  message.client.sendMessage(message.jid, listMessage)
+
+
+
+
+    
+    }});
+  
+
+
+
+    
+
+
+
+    command(
+      {
+        pattern: "diegoson",
+        fromMe: isPrivate,
+        dontAddCommandList: true,
+      },
+    async (message,match,m) => {
+      
+      let [date, time] = new Date()
+          .toLocaleString("en-IN", { timeZone: "Africa/Johannesburg" })
+          .split(",");
+    let menu = `
+    ╭───────────㋰
+    │╭──[ ${BOT_NAME} ]──㋰
+    ││USER :  ${message.pushName}
+    ││NUMBER :  ${m.sender.split("@")[0]}
+    ││WORKTYPE : ${WORK_TYPE}
+    │╰──㋰
+    │
+    │╭──[ "INFO BOT"]──㋰
+    ││BOTNAME : ${BOT_NAME}
+    ││TIME : ${time}
+    ││DATE : ${date}
+    ││OWNER : ${OWNER_NAME}
+    ││PREFIX : ${HANDLERS}
+    ││HOSTNAME : ${hostname().split("-")[0]}
+    │╰──㋰
+    ╰───────────㋰\n`
+    
+    return await message.client.sendMessage(message.jid, 
+    {
+    image: { url: 'https://telegra.ph/file/6086f101a36f7fc14bff6.png', },
+          caption: tiny(menu),
+          footer: tiny(`amarok md` ),
+          buttons: [
+            {
+            buttonId: "ping",
+            buttonText: {displayText: tiny("SPEED") },
+            },
+            {
+            buttonId: "list",
+            buttonText: {displayText: tiny("LIST") },
+            }
+          ],
+          
+          contextInfo: {
+            externalAdReply: {
+              title:  "AMAROK-MD",
+              body: "TREME-TITANS",
+              mediaType: 2,
+              thumbnail: logo,
+              mediaUrl: 'https://amarok-deploy.vercel.app',
+              sourceUrl: 'https://amarok-deploy.vercel.app',
+              showAdAttribution: true
+              }
+            }
+          }, {quoted: message})
+          })
+  
   }
-);
-
-
+  

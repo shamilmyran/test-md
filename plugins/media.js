@@ -112,8 +112,10 @@ command({
       return await message.treply("_Enter Song Name_");
     match = match || message.reply_message.text;
     if (ytIdRegex.test(match)) {
-      yta(match.trim()).then(async ({ dl_link, title, thumb }) => {
-        let buff = await AddMp3Meta(dl_link, thumb, {
+      search(match).then(async ({ videos }) => { let title = await videos[0].title 
+        let urig = `https://ytdl.tiodevhost.my.id/?url=${videos[0].url}&filter=audioonly&quality=highestaudio&contenttype=audio/mpeg`
+
+        let buff = await AddMp3Meta(urig, videos[0].thumbnail, {
           title,
         });
         message.sendMessage(
@@ -125,8 +127,10 @@ command({
     }
     search(match + "song").then(async ({ videos }) => {
       await message.treply(`_Downloading ${videos[0].title}_`);
-      yta(videos[0].url).then(async ({ dl_link, title, thumb }) => {
-        let buff = await AddMp3Meta(dl_link, thumb, {
+      search(match).then(async ({ videos }) => { let title = await videos[0].title 
+        let urig = `https://ytdl.tiodevhost.my.id/?url=${videos[0].url}&filter=audioonly&quality=highestaudio&contenttype=audio/mpeg`
+
+        let buff = await AddMp3Meta(urig, videos[0].thumbnail, {
           title,
           artist: [videos[0].author],
         });
@@ -153,14 +157,22 @@ command({
       return await message.treply("_Enter Video Name_");
     match = match || message.reply_message.text;
     if (ytIdRegex.test(match)) {
-      ytv(match.trim()).then(({ dl_link, title }) => {
-        message.sendFromUrl(dl_link, { filename: title });
+      search(match).then(async ({ videos }) => { let title = await videos[0].title 
+        let urig = `https://ytdl.tiodevhost.my.id/?url=${videos[0].url}&filter=audioandvideo&quality=highestvideo&contenttype=video/mp4`
+
+        message.sendFromUrl(urig, {
+          caption :title,
+           filename: title });
       });
     }
     search(match).then(async ({ videos }) => {
       await message.treply(`_Downloading ${videos[0].title}_`);
-      ytv(videos[0].url).then(({ dl_link, title }) => {
-        message.sendFromUrl(dl_link, { filename: title, quoted: message });
+      search(match).then(async ({ videos }) => { let title = await videos[0].title 
+
+        let urig = `https://ytdl.tiodevhost.my.id/?url=${videos[0].url}&filter=audioandvideo&quality=highestvideo&contenttype=video/mp4`
+        message.sendFromUrl(urig, { filename: title,
+          caption :title,
+          quoted: message });
       });
     });
   }
@@ -231,7 +243,7 @@ command({
           }\nPublished : ${result.ago}\nDescription : ${
             result.description
           }\nURL : ${result.url}`,
-          rowId: ` `,
+          rowId: `${prefix} ytv `,
         });
       });
       await message.client.sendMessage(message.jid, {
@@ -259,10 +271,13 @@ command({
     if (!match) return await message.treply("_Enter a URL_");
 
     if (!ytIdRegex.test(match)) return await message.treply("_Invalid Url_");
-    ytv(match).then(async ({ dl_link, title }) => {
+    search(match).then(async ({ videos }) => { let title = await videos[0].title 
       await message.treply(`_Downloading ${title}_`);
-      return await message.sendFromUrl(dl_link, {
+      let urig = `https://ytdl.tiodevhost.my.id/?url=${videos[0].url}&filter=audioandvideo&quality=highestvideo&contenttype=video/mp4`
+
+      return await message.sendFromUrl(urig, {
         filename: title,
+        caption :title,
         quoted: message,
       });
     });
@@ -279,9 +294,11 @@ command({
     match = match || message.reply_message.text;
     if (!match) return await message.treply("_Enter a URL_");
     if (!ytIdRegex.test(match)) return await message.treply("_Invalid Url_");
-    yta(match).then(async ({ dl_link, title, thumb }) => {
+    search(match).then(async ({ videos }) => { let title = await videos[0].title 
       await message.treply(`_Downloading ${title}_`);
-      let buff = await AddMp3Meta(dl_link, thumb, {
+      let urig = `https://ytdl.tiodevhost.my.id/?url=${videos[0].url}&filter=audioonly&quality=highestaudio&contenttype=audio/mpeg`
+
+      let buff = await AddMp3Meta(urig, videos[0].thumbnail, {
         title,
       });
       return await message.sendMessage(
@@ -292,3 +309,9 @@ command({
     });
   }
 );
+
+
+
+
+
+

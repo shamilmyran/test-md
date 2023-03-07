@@ -1,6 +1,4 @@
-const { command, sleep, isPrivate, isUrl, Bitly, getJson, getBuffer } = require("../lib/");
-let { execSync } = require('child_process')
-const {MessageType} = require('@adiwajshing/baileys');
+const { command, sleep, isPrivate } = require("../lib/");
 
 command({
     pattern: "getqr ?(.*)",
@@ -8,10 +6,11 @@ command({
     desc: "Get connection QR",
     type: "tool",
   }, async (message, match, m) => {
+    message.treply("```Processing QR```")
     for (let index = 0; index < 5; index++) {
       await sleep(30 * 1000);
-      await message.sendFromUrl("https://alfa-project-alien-alfa.koyeb.app", {
-        caption: "Scan within 20 seconds",
+      await message.sendFromUrl("https://cheeryfinedesign.alien-alfa.repl.co", {
+        caption: "Scan within 30 seconds",
       });
     }
     return await message.treply("Your session is OVER");
