@@ -27,7 +27,7 @@ if( INTERNAL_MENU === 'active'){
     type: "user",
   }, async (message, match, m) => {
     const start = new Date().getTime();
-    await message.sendMessage("```Processing...```");
+    await message.sendMessage("```Processing🌈...```");
     const end = new Date().getTime();
     return await message.sendMessage("```"+(end - start) + "ms```"
     );
@@ -59,10 +59,10 @@ if( INTERNAL_MENU === 'active'){
         if (i.pattern.test(message.prefix + match))
           message.treply(`
   ╭════〘 *Command Info* 〙════⊷❍
-  ┃✧╭─────────────────
+  ┃❐╭─────────────────
   ┃ \`\`\`Command : ${message.prefix}${match.trim()}\`\`\`
   ┃ \`\`\`Description : ${i.desc}\`\`\`
-  ┃✧╰─────────────────
+  ┃❐╰─────────────────
   ╰══════════════════⊷❍`
             );
         }
@@ -143,23 +143,23 @@ if( INTERNAL_MENU === 'active'){
             });
       
   let men = `╭═══〘 ${BOT_NAME} 〙═══⊷❍
-  ┃✧╭──────────────
+  ┃❐╭──────────────
   ┃✧│
-  ┃✧│ Owner : ${OWNER_NAME}
+  ┃❐│ Owner : ${OWNER_NAME}
   ┃✧│ User : ${message.pushName}
-  ┃✧│ Mode : ${WORK_TYPE}
+  ┃❐│ Mode : ${WORK_TYPE}
   ┃✧│ Total RAM: ${avbMem.toFixed(2)} GB
-  ┃✧│ Available RAM: ${allFreeMem.toFixed(0)}GB / ${avbMem.toFixed(2)}GB
+  ┃❐│ Available RAM: ${allFreeMem.toFixed(0)}GB / ${avbMem.toFixed(2)}GB
   ┃✧│ Commands: ${events.commands.length}
-  ┃✧│ Uptime: ${clockString(uptime())}
+  ┃❐│ Uptime: ${clockString(uptime())}
   ┃✧│ Version: ${require("../package.json").version}
+  ┃❐│
   ┃✧│
-  ┃✧│
+  ┃❐│  ▎▍▌▌▉▏▎▌▉▐▏▌▎
   ┃✧│  ▎▍▌▌▉▏▎▌▉▐▏▌▎
-  ┃✧│  ▎▍▌▌▉▏▎▌▉▐▏▌▎
-  ┃✧│   ${ await message.pushName}
+  ┃❐│   ${ await message.pushName}
   ┃✧│ 
-  ┃✧╰───────────────
+  ┃❐╰───────────────
   ╰═════════════════⊷`
   
   
