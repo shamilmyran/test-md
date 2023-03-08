@@ -33,7 +33,7 @@ module.exports = {
   GOODBYE_MSG: req.MESSAGE_MEM.GOODBYE_MSG  === "" ? "Hi @user It was Nice Seeing you" : req.MESSAGE_MEM.GOODBYE_MSG,
   AUTHOR: req.config.AUTHOR  === "" ? "Alien-Alfa" :  req.config.AUTHOR,
   SUDO: req.config.SUDO  === "" ? "" :  req.config.SUDO,
-  HEROKU_APP_NAME: req.config.HEROKU_APP_NAME  === "" ? "." :  process.env.HEROKU_APP_NAME,
+  HEROKU_APP_NAME: req.config.HEROKU_APP_NAME  === "" ? "^" :  process.env.HEROKU_APP_NAME,
   HEROKU_API_KEY: req.config.HEROKU_API_KEY  === "" ? "^" :  process.env.HEROKU_API_KEY,
   OWNER_NAME: req.config.OWNER_NAME  === "" ? "Alien-Alfa" :  req.config.OWNER_NAME,
   BOT_NAME: req.config.BOT_NAME  === "" ? "Aurora" :  req.config.BOT_NAME,
